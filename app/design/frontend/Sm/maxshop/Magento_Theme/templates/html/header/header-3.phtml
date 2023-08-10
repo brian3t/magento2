@@ -1,0 +1,107 @@
+<div class="header-container header-style-3">
+    <div class="header">
+        <div class="header-inner">
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-5 header-topleft">
+                            <div class="topleft-content">
+                                <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header-slider')->toHtml(); ?>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-7 header-topright">
+                            <?php echo $block->getChildHtml('currency-header'); ?>
+                            <?php echo $block->getChildHtml('language-header'); ?>
+
+                            <div class="dropdown-block-custom block-checkout">
+                                <div class="dropdown-toggle">
+                                    <a class="top-link-checkout" href="<?php echo $block->getUrl('checkout')?>" title="<?php echo __('Checkout');?>"><?php echo __('Checkout');?></a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-block-custom block-myacount">
+                                <div class="dropdown-toggle">
+                                    <a class="myaccount-link" href="<?php echo $block->getUrl('customer/account'); ?>" title="<?php echo __('My Account');?>"><?php echo __('My Account');?></a>
+                                </div>
+                                <ul class="dropdown-list">
+                                    <li class="mn-my-order"><a class="myorder-link" href="<?php echo $block->getUrl('sales/order/history'); ?>" title="<?php echo __('My Rrder');?>"><?php echo __('My Order');?></a></li>
+                                    <li class="mn-my-information"><a class="myinformation-link" href="<?php echo $block->getUrl('customer/account/edit'); ?>" title="<?php echo __('Account Information');?>"><?php echo __('Account Information');?></a></li>
+                                    <li class="mn-my-address-book"><a class="myaddress-book-link" href="<?php echo $block->getUrl('customer/address/new'); ?>" title="<?php echo __('Address Book');?>"><?php echo __('Address Book');?></a></li>
+                                    <li class="mn-my-billing-agreements"><a class="mybilling-agreements-link" href="<?php echo $block->getUrl('paypal/billing_agreement'); ?>" title="<?php echo __('Billing Agreements');?>"><?php echo __('Billing Agreements');?></a></li>
+                                    <li class="mn-my-recurring-profiles"><a class="myrecurring-profiles-link" href="<?php echo $block->getUrl('sales/recurring_profile'); ?>" title="<?php echo __('Recurring Profiles');?>"><?php echo __('Recurring Profiles');?></a></li>
+
+                                </ul>
+                            </div>
+
+                            <div class="dropdown-block-custom block-login">
+                                <div class="dropdown-toggle">
+                                    <?php
+										$login_customer =  $block->getLayout()->createBlock('Magento\Customer\Block\Account\Customer');
+									?>
+                                    
+									<?php if($login_customer->customerLoggedIn()){?>
+                                        <a class="mn-logout" href="<?php echo $block->getUrl('customer/account/logout')?>" title="<?php echo __('Logout');?>"><?php echo __('Logout');?></a>
+                                    <?php }else { ?>
+                                        <a  class="mn-login popup-login" data-toggle="modal" data-target="#modal-login" title="<?php echo __('Login')?>"><?php echo __('Login')?></a>
+                                        <a class="mn-login mn-login-mobile" href="<?php echo $block->getUrl('customer/account/login')?>" title="<?php echo __('Login')?>"><?php echo __('Login')?></a>
+                                    <?php }
+                                    ?>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-6 col-sm-5 logo-wrapper">
+                            <?php echo $block->getChildHtml('logo-header'); ?>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 mini-cart-header">
+                            <?php echo $block->getChildHtml('cart-header'); ?>
+                        </div>
+
+                        <div class="col-lg-2 col-md-3 col-sm-3 hot-line">
+                            <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('hot-line-header')->toHtml(); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-bottom">
+                <div class="yt-menu">
+                    <div class="menu-under">
+                        <div class="container">
+                            <div class="menu-wrap-bg">
+                                <div class="content-header-bottom">
+                                    <div class="navigation-container <?php ($_config->getGeneral('menu_style') == 'megamenu') ? "":" css-menu-wrap"; ?>">
+                                        <?php
+                                        if($_config->getGeneral('menu_style') == 'megamenu'){
+                                            echo $block->getChildHtml('navigation-header-megamenu');
+                                        } else {
+                                            echo $block->getChildHtml('navigation-header');
+                                        }
+                                        ?>
+                                        <div class="navigation-mobile-container">
+                                            <?php echo $block->getChildHtml('navigation.mobile'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="search-pro" onclick="">
+                                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('search-box')->toHtml();?>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

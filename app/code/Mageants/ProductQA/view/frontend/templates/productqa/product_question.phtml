@@ -1,0 +1,167 @@
+<?php if($this->hasProductQAEnable()):?>
+<?php $questions = $this->getProductQuestions();?>
+<?php $useLikeDislikeSymbol = $this->getProductQaHelper()->useLikeDislikeSymbol();?>
+<div class="questionqa" id="questionqa">
+	<div class="box-addanswer">
+		<div class="fieldset">
+			<div class="actions">
+				<button type="submit" title="Ask Question?" class="action primary" id="product-askquestion-button" onclick='jQuery(".question-form").slideToggle()'>
+					<span><?php echo __('Ask Question?');?></span>
+				</button>
+			</div>
+		</div>
+		<div class="fieldset sortorder">
+			<div class="qsearch-form fieldset">
+				
+				<div class="field">
+					<label class="label" for="qasort"><?php echo __('Search');?></label>
+					<div class="control">
+						<input type="text" name="q" id="qaq" placeholder="Have a question? Search for answers" />
+					</div>
+				</div>
+				<!-- <div class="submit control">
+					<label class="label" for="qasort">&nbsp;</label>	
+					<button type="button" id="qsearch" class="action primary"><span><?php //echo __('Search')?></span></button>
+				</div> -->
+			</div>
+		</div>
+		
+		<div class="sortorder last">
+			<div class="sorder-content fieldset">
+				<div class="field">
+				<label class="label" for="qasort"><?php echo __('Sort By :');?></label>
+					<select name="qasort" id="qasort" >
+					<option value="<?php  echo $this->getSortUrl('latest')?>"><?php echo __('Latest First')?></option>
+					<option value="<?php  echo $this->getSortUrl('oldest')?>"><?php echo __('Oldest First')?></option>
+					<option value="<?php  echo $this->getSortUrl('mostlike')?>"><?php echo __('Most Like')?></option>
+					<option value="<?php  echo $this->getSortUrl('mostdislike')?>"><?php echo __('Most Dislike')?></option>					
+					</select>
+				</div>
+			</div>
+		</div>
+		
+	
+		<div id="question-message" class="messages"></div>
+		<div class="fotorama__spinner"></div>
+		<div class="question-form">
+			<form id="question-form" action="<?php echo $this->getFormUrl()?>" method="post" id="question-form" data-mage-init='{"validation": {}}'>
+				<input type="hidden" value="<?php echo $this->getFormKey();?>" name="form_key"/>
+				<fieldset class="fieldset">					
+					<legend class="legend "><span><?php echo __('Your Question')?> : </span><strong><?php echo $this->getProduct()->getName()?></strong></legend>
+					
+					<div class="field required">
+						<label class="label" for="name"> <?php echo __('Name')?> : </label>
+						<div class="control">
+							<input type="text" id="name" class="input-text" data-validate="{required:true}" value="<?php echo trim($this->getCustomerName())?>" name="name">
+						</div>						
+					</div>
+					<div class="field required">
+						<label class="label" for="email"><?php echo __('Email')?>:</label> 
+						<div class="control">
+							<input type="email" id="email" name="email" class="input-text" data-validate="{required:true, 'validate-email':true}"  value="<?php echo $this->getCustomerEmail()?>">							
+						</div>
+					</div>
+					<div class="field required">
+						<label  class="label" for="question"><?php echo __('Your Question')?></label> 
+						<div class="control">
+							<textarea name="question" id="question" maxlength="<?php echo $this->getQuestionMaxCharacter()?>" class="input-text" data-validate="{required:true}" aria-required="true" name="question"></textarea>					
+						</div>
+					</div>
+				</fieldset>
+				<?php echo $this->getChildHtml('qacaptcha'); ?>
+				<div class="actions-toolbar"> 
+					<div class="primary actions-primary">
+						<button type="submit" required class="submit primary action"><span><?php echo __('Submit Question')?></span></button>
+					</div>
+ 					<div class="primary actions-primary">
+						<button type="button" class="submit primary action" onclick='jQuery(".question-form").slideToggle()'><span><?php echo __('Cancel')?></span></button>
+					</div>
+				</div>
+			</form>			
+		</div>
+	</div>
+	<div id="qasortquestion" class="questions-list">
+		<div id="productquestions" class="questions">
+			
+			<?php foreach($this->getProductQuestions() as $question):?>
+			<div class="productquestion" id="productquestion-<?php echo $question->getId() ?>">
+					<div id="general-message" class="messages"></div>
+					<div class="qheader">
+						<span class="question-title"><?= __('Question:'); ?></span>
+						<div class="main-question-content">
+						<div class="qtitle">
+							<h3><?php echo $question->getQuestion()?></h3>
+						</div>
+						<div class="actions">
+							<?php if($useLikeDislikeSymbol):?>
+								<a href="<?php echo $this->getLikeActionUrl( $question->getId() )?>" class="like action"><img src="<?php echo $block->getViewFileUrl('Mageants_ProductQA::images/likes1.png'); ?>">(<span class="count" id="<?php echo $question->getId(); ?>"><?php echo $question->getLikes()?></span>)</a>
+								<a href="<?php echo $this->getDislikeActionUrl( $question->getId() )?>" class="dislike action" ><img src="<?php echo $block->getViewFileUrl('Mageants_ProductQA::images/dislike.png'); ?>">(<span class="count" id="<?php echo $question->getId(); ?>"><?php echo  $question->getDislikes()?></span>)</a>
+							<?php else: ?>
+								<a href="<?php echo $this->getLikeActionUrl( $question->getId() )?>" class="like action"><?= /* @noEscape */ __('Yes ');?><?= /* @noEscape */ __('(')?><span class="count" id="<?php echo $question->getId(); ?>"><?php echo $question->getLikes()?></span><?= /* @noEscape */ __(')')?></a>
+								<a href="<?php echo $this->getDislikeActionUrl( $question->getId() )?>" class="dislike action" ><?= /* @noEscape */ __('No ');?><?= /* @noEscape */ __('(')?><span class="count" id="<?php echo $question->getId(); ?>"><?php echo  $question->getDislikes()?></span><?= /* @noEscape */ __(')')?></a>
+							<?php endif; ?>
+						</div>
+						<div class="date-n-customer-name">
+							<div class="name">
+								<span><?= /* @noEscape */ __('By ');?><?php echo $question->getName()?></span>
+							</div>
+							<div class="date">
+								<span><?=  /* @noEscape */ __(' on ');?>
+								<?php echo date("j F, Y", strtotime($question->getCreatedAt()));?>
+								</span>
+							</div>	
+						</div>
+					</div>
+					</div>
+					<div class="answers">
+						<?php echo $this->getQuestionsAnswer($question->getId() ); ?>
+					</div>
+			</div>	
+			<?php endforeach?>
+			<?php if(!count($questions)):?>
+			<div class="no-result"><?php echo __('No question found!');?></div>
+			<?php endif ?>
+		</div>
+	
+		<div class="loadmorequestion questions"></div>
+	</div>
+	<?php if($this->canShowLoadMore()):?>
+	<div class="fieldset">
+		<div class="actions">
+			<button type="button" title="Load More..." class="  loadmorequestionbutton" data-totalpage="<?php echo $this->getTotalPage()?>" data-url="<?php echo $this->getLoadMoreUrl()?>" >
+				<span><?php echo __('Load More Question...');?></span>
+			</button>
+		</div>
+	</div>
+	<?php endif?>
+</div>
+<script>
+require(['productqa'],function($){});
+</script>
+<?php endif?>
+
+<script type="text/javascript">
+	require(["jquery"], function ($) {
+	    $(window).bind("load", function() {	  
+    		$("#product-askquestion-button").click( function(){
+			    $('body').trigger('processStart');	
+			    setTimeout(function () {			    	
+			    	jQuery(".action.captcha-reload").trigger("click");
+		        }, 500);	
+			    setTimeout(function () {			    	
+		            $('body').trigger('processStop');
+		        }, 2000); 
+		    });		   
+	    });
+	});
+</script>
+<script type="text/javascript">
+require([
+    'jquery',
+    'mage/mage'
+], function($){
+ 
+   var dataForm = $('#question-form');
+   dataForm.mage('validation', {}); 
+});
+</script>

@@ -1,0 +1,107 @@
+<div  data-role="answerpannel" ></div>
+
+<div class="fieldset">
+	<div class="actions">
+		<button type="button" title="Ask Question?" class="action primary answerbutton" onclick='jQuery("#product-question-answer-<?php echo $this->getQuestionId()?>").slideToggle()' >
+			<span><?php echo __('Write Answer');?></span>
+		</button>
+	</div>
+</div>
+<div class="answers" >
+	<ul>
+	<?php foreach($this->getQuestionsAnswer() as $answer):?>
+		<li>
+			<div class="amswer " >
+				<div class="ansheader">
+					<div class="anstitle">
+						<?php echo $answer->getAnswer()?>
+					</div>
+					<div class="date-n-customer-name">
+						<div class="name">
+							<span><?php echo $answer->getName()?></span>
+						</div>
+						<div class="date">
+							<span><?php echo $this->formatDate($answer->getCreatedAt())?></span>
+						</div>
+
+						<div class="status">
+							<span><?php echo __('Current Status : ')?> <span class="current-status"><?php echo $this->getStatusText($answer->getStatus())?></span></span>
+						</div>
+					</div>
+					<div class="action">
+						<?php if($this->isApprove($answer->getStatus())):?>
+							<span class="statuschange">
+							
+							<a class="action-secondary" href="<?php echo $this->getRejectUrl($answer->getId())?>"><?php echo __('Reject Now')?></a></span>
+						<?php else:?>
+							<span class="statuschange"><a class="action-secondary" href="<?php echo $this->getApproveUrl($answer->getId())?>"><?php echo  __('Approve Now')?></a></span>
+						<?php endif?>
+					</div>
+				</div>
+			</div>
+		</li>
+	<?php endforeach?>
+	</ul>
+	
+	<?php if($this->canShowLoadMore()):?>
+	<?php /* <div class="fieldset">
+		<div class="actions">
+			<button type="button" title="Load More..." class="action  loadmoreanswerbutton" data-url="<?php echo $this->getLoadMoreUrl()?>" data-totalpage="<?php echo $this->getTotalPage()?>" >
+				<span><?php echo __('Load More Answer...');?></span>
+			</button>
+		</div>
+	</div> */?>
+	<?php endif?>
+
+
+	<div id="answer-message" class="messages"></div>
+	<div class="answer-form" id="product-question-answer">
+		<div id="answer-message"></div>
+		<form action="<?php echo $this->getFormUrl() ?>" method="post" class="question-answer-form">
+			<ul style="display:none;">
+				<li class="ansli">
+					<div class="amswer " >
+						<div class="ansheader">
+							<div class="anstitle"></div>
+							<div class="date-n-customer-name">
+								<div class="name"><span></span></div>
+								<div class="date"><span></span></div>
+								<div class="status"><span></span></div>							
+								<!--<div class="action"><span class="statuschange"><a href="<?php echo $this->getRejectUrl('{{ansid}}')?>"><?php echo __('Reject Now')?></a></span></div>	-->
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<input type="hidden" value="<?php echo $this->getFormKey();?>" name="form_key"/>
+			<input type="hidden" value="<?php echo $this->getApproveStatus()?>" name="adminstatus"/>
+			<div class="fieldset-wrapper">
+				<div class="admin__fieldset-wrapper-content _hide">
+					<fieldset class="admin__fieldset">					
+						<div class="admin__field required">
+							<label class="admin__field-label" for="name"> <?php echo __('Name')?> : </label>
+							<div class="admin__field-control">
+								<input type="text" id="name" class="admin__control-text" required aria-required="true" value="<?php echo trim($this->getCustomerName())?>" name="name">
+							</div>						
+						</div>
+						<div class="admin__field required">
+							<label class="admin__field-label" for="email"><?php echo __('Email')?>:</label> 
+							<div class="admin__field-control">
+								<input type="email" id="email" name="email" class="admin__control-text" required aria-required="true"  value="<?php echo $this->getCustomerEmail()?>">							
+							</div>
+						</div>
+						<div class="admin__field required">
+							<label  class="admin__field-label" for="question"><?php echo __('Your Answer')?></label> 
+							<div class="admin__field-control">
+								<textarea name="answer" id="answer" maxlength="255" required class="admin__control-textarea" aria-required="true" name="answer"></textarea>					
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</form>
+	</div>
+	<script>
+	require(['productqa'],function($){});
+	</script>
+</div>

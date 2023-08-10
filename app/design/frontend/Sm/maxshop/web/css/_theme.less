@@ -1,0 +1,63 @@
+// Opacity
+
+.opacity(@opacity) {
+    opacity: @opacity;
+    // IE8 filter
+    @opacity-ie: (@opacity * 100);
+    filter: ~"alpha(opacity=@{opacity-ie})";
+}
+
+// mixin defind
+
+.font-awesome (@code, @size) {
+    content: '\@{code}';
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    font-synthesis: weight style;
+    font-stretch: normal;
+    font-size-adjust: none;
+    font-language-override: normal;
+    font-kerning: auto;
+    font-feature-settings: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    font-size: @size;
+}
+
+.border_radius(@radius) {
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
+
+.banner_hover_effect() {
+    a {
+        display: block;
+        position: relative;
+        &:before {
+            background-color: rgba(0, 0, 0, 0.3);
+            content: "";
+            height: 100%;
+            width: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            .transition(all 0.2s ease-in-out 0s);
+            visibility: hidden;
+            .opacity(0);
+        }
+        &:hover {
+            &:before {
+                visibility: visible;
+                .opacity(1);
+            }
+        }
+    }
+}
+
+

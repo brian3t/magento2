@@ -1,0 +1,98 @@
+<?php $useLikeDislikeSymbol = $this->getProductQaHelper()->useLikeDislikeSymbol();?>
+
+<span class="question-title"><?php if(count($this->getQuestionsAnswer()) > 0):?><?= __('Answer:'); ?><?php endif;?></span>
+
+<div class="main-ans-content">
+<ul>
+<?php foreach($this->getQuestionsAnswer() as $answer):?>
+	<li>
+		<div class="amswer" >
+			<div class="ansheader">
+				<div class="anstitle">
+					<?php echo $answer->getAnswer()?>
+				</div>
+				<div class="actions">
+					<?php if($useLikeDislikeSymbol):?>
+						<a href="<?php echo $this->getLikeActionUrl( $answer->getId() )?>" class="like action"><img src="<?php echo $block->getViewFileUrl('Mageants_ProductQA::images/like_ans.png'); ?>">(<span class="count" id="<?php echo $answer->getId(); ?>"><?php echo $answer->getLikes()?></span>)</a>
+						<a href="<?php echo $this->getDislikeActionUrl( $answer->getId() )?>" class="dislike action"><img src="<?php echo $block->getViewFileUrl('Mageants_ProductQA::images/dislike_ans.png'); ?>">(<span class="count" id="<?php echo $answer->getId(); ?>"><?php echo  $answer->getDislikes()?></span>)</a>
+					<?php else: ?>
+						<a href="<?php echo $this->getLikeActionUrl( $answer->getId() )?>" class="like action"><?= /* @noEscape */ __('Yes ');?><?= /* @noEscape */ __('(')?><span class="count" id="<?php echo $answer->getId(); ?>"><?php echo $answer->getLikes()?></span><?= /* @noEscape */ __(')')?></a>
+						<a href="<?php echo $this->getDislikeActionUrl( $answer->getId() )?>" class="dislike action" ><?= /* @noEscape */ __('No ');?><?= /* @noEscape */ __('(')?><span class="count" id="<?php echo $answer->getId(); ?>"><?php echo  $answer->getDislikes()?></span><?= /* @noEscape */ __(')')?></a>
+					<?php endif; ?>
+					</div>
+				<div class="date-n-customer-name">
+					<div class="name">
+						<span><?= /* @noEscape */ __('By ');?><?php echo $answer->getName()?></span>
+					</div>
+					<div class="date">
+						<span><?=  /* @noEscape */ __(' on ');?><?php echo date("j F, Y", strtotime($answer->getCreatedAt()));?></span>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</li>
+<?php endforeach?>
+</ul>
+
+<?php if($this->canShowLoadMore()):?>
+<div class="fieldset">
+	<div class="actions">
+		<button type="button" title="Load More..." class="  loadmoreanswerbutton" data-url="<?php echo $this->getLoadMoreUrl()?>" >
+			<span><?php echo __('Load More Answer...');?></span>
+		</button>
+	</div>
+</div>
+<?php endif?>
+
+<div class="fieldset">
+	<div class="actions">
+		<button type="submit" title="Ask Question?" class="action primary answerbutton" onclick='jQuery("#product-question-answer-<?php echo $this->getQuestionId()?>").slideToggle()' >
+			<span><?php echo __('Write Answer');?></span>
+		</button>
+	</div>
+</div>
+<div id="answer-message"></div>
+<div class="answer-form" id="product-question-answer-<?php echo $this->getQuestionId()?>">
+	<form id="answer-form" action="<?php echo $this->getFormUrl() ?>" method="post" class="question-answer-form" data-mage-init='{"validation": {}}'>
+		<input type="hidden" value="<?php echo $this->getFormKey();?>" name="form_key"/>
+		<fieldset class="fieldset">					
+			<div class="field required">
+				<label class="label" for="name"> <?php echo __('Name')?> : </label>
+				<div class="control">
+					<input type="text" id="name" class="input-text" data-validate="{required:true}" value="<?php echo trim($this->getCustomerName())?>" name="name">
+				</div>						
+			</div>
+			<div class="field required">
+				<label class="label" for="email"><?php echo __('Email')?>:</label> 
+				<div class="control">
+					<input type="email" id="email" name="email" class="input-text" data-validate="{required:true, 'validate-email':true}" value="<?php echo $this->getCustomerEmail()?>">							
+				</div>
+			</div>
+			<div class="field required">
+				<label  class="label" for="question"><?php echo __('Your Answer')?></label> 
+				<div class="control">
+					<textarea name="answer" id="answer" maxlength="255"  class="input-text" data-validate="{required:true}" name="answer"></textarea>					
+				</div>
+			</div>
+		</fieldset>
+		<div class="actions-toolbar ">
+			<div class="primary actions-primary">
+				<button type="submit" id="submit" class="action submit primary"><span><?php echo __('Submit Answer')?></span></button>
+			</div>
+			<div class="primary actions-primary">
+				<button type="button" class=" submit " onclick='jQuery("#product-question-answer-<?php echo $this->getQuestionId()?>").slideToggle()'><span><?php echo __('Cancel')?></span></button>
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+<script type="text/javascript">
+require([
+    'jquery',
+    'mage/mage'
+], function($){
+ 
+   var dataForm = $('#answer-form');
+   dataForm.mage('validation', {}); 
+});
+</script>

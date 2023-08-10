@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<root>
+	<pages>
+		<cms_item>
+			<title>404 Not Found</title>
+			<identifier>no-route</identifier>
+			<content_heading>Whoops, our bad...</content_heading>
+			<content>
+				<![CDATA[<div class="wrapper_404page">
+	<div class="col-lg-7 col-md-7">
+		<div class="content-404page">
+			<p class="top-text">Don't worry you will be back on track in no time!</p>
+			<p class="img-404"><img src="{{media url="wysiwyg/404image/404-img-text.png"}}" alt="" /></p>
+			<p class="bottom-text">Page doesn't exist or some other error occured. Go to our home page or go back previous page</p>
+			<div class="button-404">
+				<a href="javascript:void(0);" onclick="goBack()" class="btn-404 prev-page-btn" title="PREVIOUS PAGE">PREVIOUS PAGE</a>
+				<a href="{{store url=""}}" class="btn-404 back2home" title="BACK TO HOMEPAGE">BACK TO HOMEPAGE</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-lg-5 col-md-5">
+		<div class="img-right-404">
+            <img src="{{media url="wysiwyg/404image/404-image.png"}}" alt="" />
+		</div>
+	</div>
+	<div style="clear:both; height:0px">&nbsp;</div>
+	<script>
+	function goBack() {
+		window.history.back()
+	}
+	</script>
+</div>]]>
+			</content>
+			<is_active>1</is_active>
+			<page_layout>1column</page_layout>
+			<layout_update_xml>
+				<![CDATA[]]>
+			</layout_update_xml>
+			<store_id>0</store_id>
+		</cms_item>
+		<cms_item>
+			<title>Maxshop - Responsive Magento 2 &amp; 1 Shop Theme</title>
+			<identifier>home-style-1</identifier>
+			<content_heading/>
+			<content>
+				<![CDATA[<div class="homepage-wrapper home-style-1">
+<div class="row">
+<div class="sidebar col-lg-3 col-md-3">{{block class="Magento\\Cms\\Block\\Block" block_id="vertical-menu-config"}} {{block class="Magento\\Cms\\Block\\Block" block_id="product-sidebar"}} {{block class="Magento\\Cms\\Block\\Block" block_id="blog-block"}} {{block class="Magento\\Cms\\Block\\Block" block_id="faqs"}} {{block class="Magento\\Cms\\Block\\Block" block_id="slider-client-say"}} {{block class="Magento\\Cms\\Block\\Block" block_id="brand-left"}}</div>
+<div class="col-main col-lg-9 col-md-9">{{block class="Sm\ImageSlider\Block\ImageSlider" name="imageslider" template="Sm_ImageSlider::default.phtml"}} {{block class="Sm\Deals\Block\Deals" name="deals" template="Sm_Deals::default.phtml" title="Hot Deals" nb_column1="4" nb_column2="3" nb_column3="3" nb_column4="2" nb_column5="1" margin="30"}} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default.phtml" product_category="11" pretext="static_c_electronic" nbi_column1="4" nbi_column2="3" nbi_column3="2" nbi_column4="1"}} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default.phtml" product_category="20" pretext="static_c_mobile" nbi_column1="4" nbi_column2="3" nbi_column3="2" nbi_column4="1"}} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default.phtml" product_category="75" pretext="static_c_computer" nbi_column1="4" nbi_column2="3" nbi_column3="2" nbi_column4="1"}}</div>
+</div>
+<div class="row">{{block class="Magento\\Cms\\Block\\Block" block_id="bottom-service"}}</div>
+</div>]]>
+			</content>
+			<is_active>1</is_active>
+			<page_layout>1column</page_layout>
+			<layout_update_xml>
+				<![CDATA[]]>
+			</layout_update_xml>
+			<store_id>0</store_id>
+		</cms_item>
+		<cms_item>
+			<title>All categories</title>
+			<identifier>sub-cateogries1</identifier>
+			<content_heading/>
+			<content>
+				<![CDATA[<div class="block-cat">
+ <div class="content-cat">
+  <div class="row">
+   <div class="cat-item col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="cat-inner">
+     <a href="accessories/mobile-accessories.html" class="img-cat">
+      <img src="{{media url="wysiwyg/bg-cat/00.jpg"}}" alt="" />
+     </a>
+     <div class="name-cat font-etro">
+      <a title="Mobile Accessories" href="#">Mobile Accessories</a>
+     </div>
+    </div>
+   </div>
+   
+   <div class="cat-item col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="cat-inner">
+     <a href="accessories/beauty-women.html" class="img-cat">
+      <img src="{{media url="wysiwyg/bg-cat/01.jpg"}}" alt="" />
+     </a>
+     <div class="name-cat font-etro">
+      <a title="Beauty Women" href="#">Home Appliances</a>
+     </div>
+    </div>
+   </div>
+
+   <div class="cat-item col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="cat-inner">
+     <a href="craft-supplies.html" class="img-cat">
+      <img src="{{media url="wysiwyg/bg-cat/02.jpg"}}" alt="" />
+     </a>
+     <div class="name-cat font-etro">
+      <a title="Craft-supplies" href="#">Smartphones & Tablet</a>
+     </div>
+    </div>
+   </div>
+   
+   <div class="cat-item col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="cat-inner">
+     <a href="kid-baby.html" class="img-cat">
+      <img src="{{media url="wysiwyg/bg-cat/03.jpg"}}" alt="" />
+     </a>
+     <div class="name-cat font-etro">
+      <a title="Kid Baby" href="#">Computers & Laptops</a>
+     </div>
+    </div>
+   </div>
+   
+   <div class="cat-item col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="cat-inner">
+     <a href="accessories/televisions.html" class="img-cat">
+      <img src="{{media url="wysiwyg/bg-cat/04.jpg"}}" alt="" />
+     </a>
+     <div class="name-cat font-etro">
+      <a title="televisions" href="#">Televisions</a>
+     </div>
+    </div>
+   </div>
+   
+   <div class="cat-item col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="cat-inner">
+     <a href="accessories/secondhand.html" class="img-cat">
+      <img src="{{media url="wysiwyg/bg-cat/05.jpg"}}" alt="" />
+     </a>
+     <div class="name-cat font-etro">
+      <a title="secondhand" href="#">Mobile Accessories</a>
+     </div>
+    </div>
+   </div>
+   <div class="cat-item col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="cat-inner">
+     <a href="accessories/pc-components.html" class="img-cat">
+      <img src="{{media url="wysiwyg/bg-cat/06.jpg"}}" alt="" />
+     </a>
+     <div class="name-cat font-etro">
+      <a title="pc-components" href="#">Pc Components</a>
+     </div>
+    </div>
+   </div>
+   
+   <div class="cat-item col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="cat-inner">
+     <a href="fashion-accesories/men.html" class="img-cat">
+      <img src="{{media url="wysiwyg/bg-cat/08.jpg"}}" alt="" />
+     </a>
+     <div class="name-cat font-etro">
+      <a title="men" href="#">Mobile & Ipad</a>
+     </div>
+    </div>
+   </div>
+   
+   <div class="cat-item col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="cat-inner">
+     <a href="fashion-accesories/women.html" class="img-cat">
+      <img src="{{media url="wysiwyg/bg-cat/07.jpg"}}" alt="" />
+     </a>
+     <div class="name-cat font-etro">
+      <a title="women" href="#">Electonic Televisions</a>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>]]>
+			</content>
+			<is_active>1</is_active>
+			<page_layout>1column</page_layout>
+			<layout_update_xml>
+				<![CDATA[]]>
+			</layout_update_xml>
+			<store_id>0</store_id>
+		</cms_item>
+		<cms_item>
+			<title>Maxshop - Responsive Magento 2 &amp; 1 Shop Theme</title>
+			<identifier>home-style-2</identifier>
+			<content_heading/>
+			<content>
+				<![CDATA[<div class="homepage-wrapper home-style-2">
+<div class="row">
+<div class="col-main col-lg-12 col-md-12">{{block class="Sm\ImageSlider\Block\ImageSlider" name="imageslider" template="Sm_ImageSlider::default.phtml"}} {{block class="Magento\\Cms\\Block\\Block" block_id="top-static-image"}}</div>
+</div>
+<div class="row">
+<div class="sidebar col-lg-3 col-md-3">{{block class="Magento\\Cms\\Block\\Block" block_id="product-sidebar"}} {{block class="Magento\\Cms\\Block\\Block" block_id="blog-block"}} {{block class="Magento\\Cms\\Block\\Block" block_id="faqs"}} {{block class="Magento\\Cms\\Block\\Block" block_id="slider-client-say"}} {{block class="Magento\\Cms\\Block\\Block" block_id="brand-left"}}</div>
+<div class="col-main col-lg-9 col-md-9">{{block class="Sm\Deals\Block\Deals" name="deals" template="Sm_Deals::default.phtml" title="Hot Deals" nb_column1="4" nb_column2="3" nb_column3="3" nb_column4="2" nb_column5="1" margin="30"}} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default.phtml" product_category="11" pretext="static_c_electronic" nbi_column1="4" nbi_column2="3" nbi_column3="2" nbi_column4="1"}} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default.phtml" product_category="20" pretext="static_c_mobile" nbi_column1="4" nbi_column2="3" nbi_column3="2" nbi_column4="1"}} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default.phtml" product_category="75" pretext="static_c_computer" nbi_column1="4" nbi_column2="3" nbi_column3="2" nbi_column4="1"}}</div>
+</div>
+<div class="row">{{block class="Magento\\Cms\\Block\\Block" block_id="bottom-service"}}</div>
+</div>]]>
+			</content>
+			<is_active>1</is_active>
+			<page_layout>1column</page_layout>
+			<layout_update_xml>
+				<![CDATA[]]>
+			</layout_update_xml>
+			<store_id>0</store_id>
+		</cms_item>
+		<cms_item>
+			<title>Maxshop - Responsive Magento 2 &amp; 1 Shop Theme</title>
+			<identifier>home-style-3</identifier>
+			<content_heading/>
+			<content>
+				<![CDATA[<div class="homepage-wrapper home-style-3">
+<div class="row">
+<div class="col-lg-12 col-md-12">
+<div class="yt-slideshow">{{block class="Sm\ImageSlider\Block\ImageSlider" name="imageslider" template="Sm_ImageSlider::default.phtml"}}</div>
+{{block class="Magento\\Cms\\Block\\Block" block_id="static-banner-right"}}</div>
+</div>
+<div class="row">{{block class="Magento\\Cms\\Block\\Block" block_id="bottom-service"}}</div>
+<div class="row">
+<div class="col-main col-lg-9 col-md-9">{{block class="Sm\Deals\Block\Deals" name="deals" template="Sm_Deals::default.phtml" title="Hot Deals" nb_column1="4" nb_column2="3" nb_column3="3" nb_column4="2" nb_column5="1" margin="30"}} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default.phtml" product_category="11" pretext="static_c_electronic" }} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default.phtml" product_category="20" pretext="static_c_mobile" }} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default.phtml" product_category="75" pretext="static_c_computer" }}</div>
+<div class="sidebar col-lg-3 col-md-3">{{block class="Magento\\Cms\\Block\\Block" block_id="product-sidebar"}} {{block class="Magento\\Cms\\Block\\Block" block_id="blog-block"}} {{block class="Magento\\Cms\\Block\\Block" block_id="faqs"}} {{block class="Magento\\Cms\\Block\\Block" block_id="slider-client-say"}} {{block class="Magento\\Cms\\Block\\Block" block_id="st-image-home-right"}}</div>
+</div>
+<div class="row">{{block class="Magento\\Cms\\Block\\Block" block_id="brand-slider"}}</div>
+</div>]]>
+			</content>
+			<is_active>1</is_active>
+			<page_layout>1column</page_layout>
+			<layout_update_xml>
+				<![CDATA[]]>
+			</layout_update_xml>
+			<store_id>0</store_id>
+		</cms_item>
+		<cms_item>
+			<title>Maxshop - Responsive Magento 2 &amp; 1 Shop Theme</title>
+			<identifier>home-style-4</identifier>
+			<content_heading/>
+			<content>
+				<![CDATA[<div class="homepage-wrapper home-style-4">
+<div class="row">
+<div class="col-lg-3 col-md-3">&nbsp;</div>
+<div class="col-lg-9 col-md-9 imageslider-wrap">{{block class="Sm\ImageSlider\Block\ImageSlider" name="imageslider" template="Sm_ImageSlider::default.phtml"}}</div>
+</div>
+<div class="row">{{block class="Magento\\Cms\\Block\\Block" block_id="bottom-service"}}</div>
+<div class="row">
+<div class="sidebar col-lg-3 col-md-3">{{block class="Magento\\Cms\\Block\\Block" block_id="product-sidebar"}} {{block class="Magento\\Cms\\Block\\Block" block_id="blog-block"}} {{block class="Magento\\Cms\\Block\\Block" block_id="faqs"}} {{block class="Magento\\Cms\\Block\\Block" block_id="slider-client-say"}} {{block class="Magento\\Cms\\Block\\Block" block_id="brand-left"}}</div>
+<div class="col-main col-lg-9 col-md-9">{{block class="Sm\Deals\Block\Deals" name="deals" template="Sm_Deals::default.phtml" title="Hot Deals" nb_column1="4" nb_column2="3" nb_column3="3" nb_column4="2" nb_column5="1" margin="30"}} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default.phtml" product_category="11" pretext="static_c_electronic" }} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default.phtml" product_category="20" pretext="static_c_mobile" }} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default.phtml" product_category="75" pretext="static_c_computer" }}</div>
+</div>
+</div>]]>
+			</content>
+			<is_active>1</is_active>
+			<page_layout>1column</page_layout>
+			<layout_update_xml>
+				<![CDATA[]]>
+			</layout_update_xml>
+			<store_id>0</store_id>
+		</cms_item>
+		<cms_item>
+			<title>Maxshop - Responsive Magento 2 &amp; 1 Shop Theme</title>
+			<identifier>home-style-5</identifier>
+			<content_heading/>
+			<content>
+				<![CDATA[<div class="homepage-wrapper home-style-5">
+<div class="row">
+<div class="col-lg-12 col-md-12">
+<div class="yt-slideshow">{{block class="Sm\ImageSlider\Block\ImageSlider" name="imageslider" template="Sm_ImageSlider::default.phtml"}}</div>
+{{block class="Magento\\Cms\\Block\\Block" block_id="st-image-home-right-v5"}}</div>
+</div>
+<div class="row">{{block class="Magento\\Cms\\Block\\Block" block_id="bottom-service"}}</div>
+<div class="row">
+<div class="col-main col-lg-12">{{block class="Sm\Deals\Block\Deals" name="deals" template="Sm_Deals::default.phtml" title="Hot Deals" nb_column1="5" nb_column2="3" nb_column3="2" nb_column4="2" nb_column5="1" margin="30"}} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default_index5.phtml" product_category="11" posttext="icon-electronic-st-id" pretext="img-super-1-h5" }} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default_index5.phtml" product_category="20" posttext="icon-mobile-st-id" pretext="img-super-2-h5" }} {{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default_index5.phtml" product_category="75" posttext="icon-computer-st-id" pretext="img-super-3-h5" }}</div>
+</div>
+<div class="row">
+<div class="blog-bottom col-lg-4 col-md-4 col-sm-6">{{block class="Magento\\Cms\\Block\\Block" block_id="blog-block-index5"}}</div>
+<div class="basic-product-bottom col-lg-4 col-md-4 col-sm-6">{{block class="Sm\BasicProducts\Block\BasicProducts" name="basicproducts" template="Sm_BasicProducts::sidebar-product-index5.phtml" title="<span>Best Sellers</span>" product_category="3,7,9,11,20" product_limitation="2" img_width="100" img_height="100" product_addcart_display="0" product_addwishlist_display="0" product_addcompare_display="0"}}</div>
+<div class="col-lg-4 col-md-4 client-say-bottom">{{block class="Magento\\Cms\\Block\\Block" block_id="slider-client-say-index5"}}</div>
+</div>
+<div class="row">{{block class="Magento\\Cms\\Block\\Block" block_id="brand-slider"}}</div>
+</div>]]>
+			</content>
+			<is_active>1</is_active>
+			<page_layout>1column</page_layout>
+			<layout_update_xml>
+				<![CDATA[]]>
+			</layout_update_xml>
+			<store_id>0</store_id>
+		</cms_item>
+		<cms_item>
+			<title>Maxshop - Responsive Magento 2 &amp; 1 Shop Theme</title>
+			<identifier>home-style-6</identifier>
+			<content_heading/>
+			<content>
+				<![CDATA[<div class="homepage-wrapper home-style-6">
+<div class="row">
+<div class="col-lg-3 col-md-3">&nbsp;</div>
+<div class="col-lg-9 col-md-12 imageslider-wrap">{{block class="Sm\ImageSlider\Block\ImageSlider" name="imageslider" template="Sm_ImageSlider::default.phtml"}}</div>
+</div>
+{{block class="Magento\\Cms\\Block\\Block" block_id="v6-banner1"}}
+<div class="row">
+<div class="col-main col-lg-9 col-md-9 col-sm-8 col-xs-12">{{block class="Sm\Deals\Block\Deals" name="deals" template="Sm_Deals::default.phtml" title="Hot Deals" nb_column1="4" nb_column2="3" nb_column3="2" nb_column4="2" nb_column5="1" margin="30"}}</div>
+<div class="sidebar col-lg-3 col-md-3 col-sm-4 col-xs-12">{{block class="Sm\BasicProducts\Block\BasicProducts" template="Sm_BasicProducts::sidebar-product.phtml" title="<span>Best Sellers</span>" product_limitation="6" num_item="3" img_width="100" img_height="100" product_addcart_display="0" product_addwishlist_display="0" product_addcompare_display="0"}}</div>
+</div>
+<div class="super-cate1">{{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default_index6.phtml" posttext="id6-super1-banner2" pretext="id6-super1-banner1" product_category="20"}}</div>
+{{block class="Magento\\Cms\\Block\\Block" block_id="v6-banner2"}}
+<div class="super-cate2">{{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default_index6.phtml" posttext="id6-super2-banner2" pretext="id6-super2-banner1" product_category="11"}}</div>
+{{block class="Magento\\Cms\\Block\\Block" block_id="v6-banner3"}}
+<div class="super-cate3">{{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default_index6.phtml" posttext="id6-super3-banner2" pretext="id6-super3-banner1" product_category="116"}}</div>
+{{block class="Magento\\Cms\\Block\\Block" block_id="v6-banner3"}}
+<div class="row">
+<div class="blog-bottom col-lg-4 col-md-4 col-sm-6 col-xs-12">{{block class="Magento\\Cms\\Block\\Block" block_id="blog-block-index5"}}</div>
+<div class="basic-product-bottom col-lg-4 col-md-4 col-sm-6 col-xs-12">{{block class="Sm\BasicProducts\Block\BasicProducts" name="basicproducts" template="Sm_BasicProducts::sidebar-product-index5.phtml" title="<span>Best Sellers</span>" product_category="3,7,9,11,20" product_limitation="2" img_width="100" img_height="100" product_addcart_display="0" product_addwishlist_display="0" product_addcompare_display="0"}}</div>
+<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 client-say-bottom">{{block class="Magento\\Cms\\Block\\Block" block_id="slider-client-say-index5"}}</div>
+</div>
+<div class="row">{{block class="Magento\\Cms\\Block\\Block" block_id="brand-slider"}}</div>
+</div>]]>
+			</content>
+			<is_active>1</is_active>
+			<page_layout>1column</page_layout>
+			<layout_update_xml>
+				<![CDATA[]]>
+			</layout_update_xml>
+			<store_id>0</store_id>
+		</cms_item>
+		<cms_item>
+			<title>Maxshop - Responsive Magento 2 &amp; 1 Shop Theme</title>
+			<identifier>home-style-7</identifier>
+			<content_heading/>
+			<content>
+				<![CDATA[<div class="homepage-wrapper home-style-7">{{block class="Sm\ImageSlider\Block\ImageSlider" name="imageslider" template="Sm_ImageSlider::default.phtml"}} {{block class="Magento\\Cms\\Block\\Block" block_id="top-static-image"}}
+<div class="row">
+<div class="sidebar col-lg-3 col-md-3">{{block class="Sm\BasicProducts\Block\BasicProducts" template="Sm_BasicProducts::sidebar-product.phtml" title="<span>Best Sellers</span>" product_limitation="6" num_item="3" img_width="100" img_height="100" product_addcart_display="0" product_addwishlist_display="0" product_addcompare_display="0"}}{{block class="Magento\\Cms\\Block\\Block" block_id="id7-blog-block"}} {{block class="Magento\\Cms\\Block\\Block" block_id="id7-banner-left"}} {{block class="Magento\\Cms\\Block\\Block" block_id="slider-client-say"}} {{block class="Magento\\Cms\\Block\\Block" block_id="brand-left"}}</div>
+<div class="col-main col-lg-9 col-md-9">
+<div class="super-cate1">{{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default_index6.phtml" posttext="id7-super1-slider-banner" pretext="id7-super1-banner1" product_category="11"}}</div>
+<div class="super-cate2">{{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default_index6.phtml" posttext="id7-super2-slider-banner" pretext="id7-super2-banner1" product_category="20"}}</div>
+<div class="super-cate3">{{block class="Sm\SuperCategories\Block\SuperCategories" name="supercategories" template="Sm_SuperCategories::default_index6.phtml" posttext="id7-super3-slider-banner" pretext="id7-super3-banner1" product_category="116"}}</div>
+</div>
+</div>
+<div class="row">{{block class="Magento\\Cms\\Block\\Block" block_id="bottom-service"}}</div>
+</div>]]>
+			</content>
+			<is_active>1</is_active>
+			<page_layout>1column</page_layout>
+			<layout_update_xml>
+				<![CDATA[]]>
+			</layout_update_xml>
+			<store_id>0</store_id>
+		</cms_item>
+		<cms_item>
+			<title>Maxshop - Responsive Magento 2 &amp; 1 Shop Theme</title>
+			<identifier>home-style-8</identifier>
+			<content_heading/>
+			<content>
+				<![CDATA[<div class="homepage-wrapper home-style-8">{{block class="Sm\ImageSlider\Block\ImageSlider" name="imageslider" template="Sm_ImageSlider::default.phtml"}} {{block class="Magento\\Cms\\Block\\Block" block_id="id8-custom-banner"}}
+<div class="container">
+	{{block class="Magento\\Cms\\Block\\Block" block_id="id8-policy"}}
+	{{block class="Sm\ListingTabs\Block\ListingTabs" template="Sm_ListingTabs::default.phtml" title="" type_show="slider" type_listing="all" display_countdown="0" type_filter="fieldproducts" field_tabs="lastest_products,num_rating_summary,ordered_qty" category_select="126"}}
+	{{block class="Magento\\Cms\\Block\\Block" block_id="id8-block-banner"}}
+</div>
+{{block class="Magento\\Cms\\Block\\Block" block_id="id8-block-infos"}}
+<div class="container">
+<div class="slider-basic-w">{{block class="Sm\BasicProducts\Block\BasicProducts" template="Sm_BasicProducts::slider-home8.phtml" title="New Arrivals" product_order_by="created_at" nb_column1="4" nb_column2="4" nb_column3="3" nb_column4="2" nb_column5="1" product_limitation="16" nb_rows="2" }}</div>
+{{block class="Magento\\Cms\\Block\\Block" block_id="id8-blog"}}</div>
+{{block class="Magento\\Cms\\Block\\Block" block_id="id8-slider-brand"}}</div>]]>
+			</content>
+			<is_active>1</is_active>
+			<page_layout>1column</page_layout>
+			<layout_update_xml>
+				<![CDATA[]]>
+			</layout_update_xml>
+			<store_id>0</store_id>
+		</cms_item>
+		<cms_item>
+			<title>Maxshop - Responsive Magento 2 &amp; 1 Shop Theme</title>
+			<identifier>home-style-9</identifier>
+			<content_heading/>
+			<content>
+				<![CDATA[<div class="homepage-wrapper home-style-9">
+<div class="row">
+<div class="top-left col-lg-9 col-md-9 col-sm-12 col-xs-12">{{block class="Sm\ImageSlider\Block\ImageSlider" name="imageslider" template="Sm_ImageSlider::default.phtml"}}</div>
+<div class="top-right col-lg-3 col-md-3 col-sm-12 col-xs-12">{{block class="Magento\\Cms\\Block\\Block" block_id="st-image-home-right-v5"}}</div>
+</div>
+{{block class="Magento\\Cms\\Block\\Block" block_id="id9-banner2"}} 
+
+<div class="listingtabs-padding">
+{{block class="Sm\ListingTabs\Block\ListingTabs" template="Sm_ListingTabs::default.phtml" title="" type_show="slider" type_listing="all" display_countdown="0" type_filter="fieldproducts" field_tabs="lastest_products,num_rating_summary,ordered_qty" category_select="9,11,47,68,69,70,71,72,74,82,83,84,85,86,101,102,103,104,105,76,92,93,94,95,110,112,112,113,114" limitation="6"}}
+</div>
+
+{{block class="Magento\\Cms\\Block\\Block" block_id="id9-policy"}} 
+{{block class="Magento\\Cms\\Block\\Block" block_id="id9-banner3"}}
+<div class="slider-basic-w">{{block class="Sm\BasicProducts\Block\BasicProducts" template="Sm_BasicProducts::slider-home8.phtml" title="New Arrivals" product_order_by="created_at" nb_column1="1" nb_column2="1" nb_column3="1" nb_column4="1" nb_column5="1" product_limitation="8" nb_rows="4" }}</div>
+{{block class="Magento\\Cms\\Block\\Block" block_id="id9-banner4"}}
+
+<div class="listing-tab2">
+{{block class="Sm\ListingTabs\Block\ListingTabs" template="Sm_ListingTabs::default2.phtml" type_show="slider" type_listing="all" display_countdown="0" type_filter="categories" category_tabs="9,7,122,124,20,120,125,121,123,75" title="Top Selling" limitation="8"}}
+</div>
+
+{{block class="Magento\\Cms\\Block\\Block" block_id="id8-blog"}} {{block class="Magento\\Cms\\Block\\Block" block_id="brand-slider"}}</div>]]>
+			</content>
+			<is_active>1</is_active>
+			<page_layout>1column</page_layout>
+			<layout_update_xml>
+				<![CDATA[]]>
+			</layout_update_xml>
+			<store_id>0</store_id>
+		</cms_item>
+	</pages>
+</root>

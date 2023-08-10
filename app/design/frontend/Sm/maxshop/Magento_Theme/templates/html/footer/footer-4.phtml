@@ -1,0 +1,54 @@
+<?php
+	$_config = $this->helper('Sm\Maxshop\Helper\Data');
+?>
+<div class="footer-container footer-4">	
+	
+	<div class="footer">
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-4 col-sm-12 topleft">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer4-contactus')->toHtml(); ?>
+						
+						<?php echo $block->getLayout()->createBlock('Magento\Newsletter\Block\Subscribe')->setTemplate('subscribe-footer.phtml')->toHtml(); ?>
+
+						<?php echo $block->getLayout()->createBlock('Magento\Framework\View\Element\Template')->setTemplate('Magento_Theme::html/social.phtml')->toHtml(); ?>
+					</div>
+					<div class="col-lg-9 col-md-8 col-sm-12 topright">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('f4-testimonials-slide')->toHtml(); ?>
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-4 f-box1">
+								<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ft-my-account')->toHtml(); ?>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4 f-box2">
+								<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ft-information')->toHtml(); ?>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4 f-box1">
+								<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ft-howtobuy')->toHtml(); ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer-bottom">
+			<div class="container">
+				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('f4-services')->toHtml(); ?>
+				<div class="copyright-payment">
+					<div class="copyright-footer">
+						<?php if($_config->getAdvanced('custom_copyright')){ ?>
+							<address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+						<?php } else {?>
+							<address><?php /* @escapeNotVerified */ echo $block->getCopyright() ?></address>
+						<?php } ?>
+					</div>
+					<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('f4-payment')->toHtml(); ?>
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+		
+</div>

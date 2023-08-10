@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<maxshop>
+		
+			<general>
+				<theme_color>red</theme_color>
+				<header_style>hd-1</header_style>
+				<footer_style>footer-1</footer_style>
+				<body_font></body_font>
+				<font_size></font_size>
+				<body_google_font></body_google_font>
+				<element_google_font></element_google_font>
+				<google_font_targets></google_font_targets>
+				<body_link_color></body_link_color>
+				<body_link_hover_color></body_link_hover_color>
+				<body_text_color></body_text_color> 
+				<body_background_color></body_background_color>
+				<menu_style></menu_style>
+				<menu_ontop></menu_ontop>
+				<responsive_menu></responsive_menu>
+			</general>
+			
+			<theme_layout>
+				<layout_style></layout_style>
+				<responsive_layout></responsive_layout>
+			</theme_layout>
+			
+			<product_listing>
+				<onecolumn_device_1200></onecolumn_device_1200>
+				<onecolumn_device_992></onecolumn_device_992>
+				<onecolumn_device_768></onecolumn_device_768>
+				<onecolumn_device_481></onecolumn_device_481>
+				<onecolumn_device_less_481></onecolumn_device_less_481>
+				<twocolumn_device_1200></twocolumn_device_1200>
+				<twocolumn_device_992></twocolumn_device_992>
+				<twocolumn_device_768></twocolumn_device_768>
+				<twocolumn_device_481></twocolumn_device_481>
+				<twocolumn_device_less_481></twocolumn_device_less_481>	
+				<threecolumn_device_1200></threecolumn_device_1200>
+				<threecolumn_device_992></threecolumn_device_992>
+				<threecolumn_device_768></threecolumn_device_768>
+				<threecolumn_device_481></threecolumn_device_481>
+				<threecolumn_device_less_481></threecolumn_device_less_481>						
+			</product_listing>
+			
+			<product_detail>
+				<show_related></show_related>
+				<related_limit></related_limit>
+				<show_upsell></show_upsell>
+				<upsell_limit></upsell_limit>
+				<show_custom_tab></show_custom_tab>
+				<custom_tab_name></custom_tab_name>
+				<customtab_content></customtab_content>
+			</product_detail>
+			
+			<socials>
+				<show_facebook></show_facebook>
+				<facebook_name></facebook_name>
+				<facebook_url></facebook_url>
+				<show_twitter></show_twitter>
+				<twitter_name></twitter_name>
+				<twitter_url></twitter_url>
+				<show_google></show_google>
+				<google_name></google_name>
+				<google_url></google_url>
+				<show_linkedin></show_linkedin>
+				<linkedin_name></linkedin_name>
+				<linkedin_url></linkedin_url>
+				<show_pinterest></show_pinterest>
+				<pinterest_name></pinterest_name>	
+				<pinterest_url></pinterest_url>				
+			</socials>			
+			
+			<advanced>
+				<show_gototop></show_gototop>
+				<show_addtocart_button></show_addtocart_button>
+				<show_wishlist_button></show_wishlist_button>
+				<show_compare_button></show_compare_button>
+				<show_newsletter_popup></show_newsletter_popup>
+				<custom_copyright></custom_copyright>
+				<copyright_content></copyright_content>	
+				<custom_css></custom_css>
+				<custom_js></custom_js>					
+			</advanced>
+			
+		</maxshop>
+	</default>
+</config>

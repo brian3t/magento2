@@ -1,0 +1,135 @@
+[06-Aug-2019 15:31:13 UTC] PHP Fatal error:  Uncaught Zend\Http\Header\Exception\InvalidArgumentException: A field name was provided without a field value in /home4/guypolselli/public_html/vendor/zendframework/zend-http/src/Headers.php:192
+Stack trace:
+#0 /home4/guypolselli/public_html/vendor/zendframework/zend-http/src/Headers.php(155): Zend\Http\Headers->addHeaderLine('Mozilla/5.0 (Wi...')
+#1 /home4/guypolselli/public_html/vendor/zendframework/zend-http/src/PhpEnvironment/Request.php(236): Zend\Http\Headers->addHeaders(Array)
+#2 /home4/guypolselli/public_html/vendor/zendframework/zend-http/src/PhpEnvironment/Request.php(84): Zend\Http\PhpEnvironment\Request->setServer(Object(Zend\Stdlib\Parameters))
+#3 /home4/guypolselli/public_html/vendor/magento/framework/HTTP/PhpEnvironment/Request.php(133): Zend\Http\PhpEnvironment\Request->__construct()
+#4 /home4/guypolselli/public_html/vendor/magento/framework/App/Request/Http.php(115): Magento\Framework\HTTP\PhpEnvironment\Request->__construct(Object(Magento\Framework\Stdlib\Cookie\PhpCookieReader), Object(Mage in /home4/guypolselli/public_html/vendor/zendframework/zend-http/src/Headers.php on line 192
+[25-Feb-2021 00:41:47 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 00:41:47 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 00:41:50 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 00:41:50 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 00:41:52 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 00:41:52 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 00:41:53 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 00:41:53 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 01:23:26 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 01:23:26 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 03:45:42 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 03:45:42 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 03:45:58 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 03:45:58 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 03:46:14 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 03:46:14 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 05:01:38 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 05:01:38 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 05:39:47 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 05:39:47 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 07:08:05 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 07:08:05 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 07:08:08 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 07:08:08 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 07:08:09 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 07:08:09 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[25-Feb-2021 07:08:18 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[25-Feb-2021 07:08:18 UTC] PHP Fatal error:  Uncaught Zend_Cache_Exception: cache_dir "/home/auction/public_html/var/page_cache" is not writable in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php:209
+Stack trace:
+#0 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache/Backend/File.php(180): Zend_Cache::throwException('cache_dir "/hom...')
+#1 /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php(87): Zend_Cache_Backend_File->setCacheDir('/home/auction/p...')
+#2 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(153): Cm_Cache_Backend_File->__construct(Array)
+#3 /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php(94): Zend_Cache::_makeBackend('Cm_Cache_Backen...', Array, true, true)
+#4 /home/auction/public_html/vendor/magento/framework/App/Cache/Frontend/Factory.php(157): Zend_Cache::factory('Magento\\Framewo...', 'Cm_Cache_Backen...', Array, Array, true, true, true)
+#5 /home/auction/public_html/vendor/magento/framework/App/Ca in /home/auction/public_html/vendor/magento/zendframework1/library/Zend/Cache.php on line 209
+[20-Sep-2021 03:08:26 UTC] PHP Deprecated:  The each() function is deprecated. This message will be suppressed on further calls in /home/auction/public_html/vendor/colinmollenhour/cache-backend-file/File.php on line 81
+[20-Sep-2021 03:08:26 UTC] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/auction/public_html/vendor/zendframework/zend-stdlib/src/ArrayObject.php on line 426

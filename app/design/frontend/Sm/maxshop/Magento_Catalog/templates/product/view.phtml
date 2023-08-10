@@ -1,0 +1,59 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+
+<?php
+	$_config = $this->helper('Sm\Maxshop\Helper\Data');
+?>
+
+<div class="row">
+	<div class="col-lg-6 col-md-6 image-box-detail">
+		<?php echo $block->getChildHtml('product.info.media'); ?>
+	</div>
+	
+	<div class="col-lg-6 col-md-6 info-box-detail">
+		<?php echo $block->getChildHtml('product.info.main'); ?>
+
+	</div>
+</div>
+<div class="row">
+	<?php 
+		$_related = strlen($block->getChildHtml('related.product'));
+	?>
+    <?php if($_config->getProductDetail('show_related') && $_related > 40){ 
+		$class_detail_bottom = "col-lg-9 col-md-9";
+		}else{
+			$class_detail_bottom = "col-lg-12 col-md-12";
+		} 
+	?>
+    <?php if($_config->getProductDetail('show_related') && $_related > 40){ ?>
+        <div class="sidebar col-lg-3 col-md-3">
+            <?php echo $block->getChildHtml('related.product'); ?>
+        </div>
+    <?php } ?>
+	<div class="<?php echo $class_detail_bottom;?> detail-bottom-wrapper">
+		<?php echo $block->getChildHtml('detail.bottom'); ?>
+
+        <?php
+        $related = $block->getChildHtml('related.product');
+        $upsell = $block->getChildHtml('upsell.product');
+        ?>
+
+
+        <?php if($_config->getProductDetail('show_upsell')){?>
+            <div class="box-related-upsell">
+                <?php echo $block->getChildHtml('upsell.product'); ?>
+            </div>
+        <?php } ?>
+	</div>
+
+</div>
+<style>
+table.additional-attributes {max-width:400px;}
+table.additional-attributes .label{display:table;margin-top:8px!important;}
+</style>

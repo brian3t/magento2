@@ -1,0 +1,5 @@
+@-moz-document url-prefix() {
+    .homepage-wrapper .banner-bottom-wrapper .banner-list {
+        margin-top: -70px;
+    }
+}
