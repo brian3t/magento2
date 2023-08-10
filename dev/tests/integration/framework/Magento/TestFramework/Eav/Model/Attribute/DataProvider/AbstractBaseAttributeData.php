@@ -7,8 +7,8 @@ declare(strict_types=1);
 
 namespace Magento\TestFramework\Eav\Model\Attribute\DataProvider;
 
-use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Store\Model\Store;
+use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 
 /**
  * Base POST data for create attribute.

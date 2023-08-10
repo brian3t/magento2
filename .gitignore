@@ -64,6 +64,9 @@ atlassian*
 !/pub/media/sitemap/.htaccess
 /pub/static/*
 !/pub/static/.htaccess
+/pub/media/product
+/pub/media/product/*
+
 
 /var/*
 !/var/.htaccess
@@ -72,3 +75,4 @@ atlassian*
 /generated/*
 !/generated/.htaccess
 .DS_Store
+/pub/media/product/

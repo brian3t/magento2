@@ -5,8 +5,8 @@
  */
 namespace Magento\Framework\Api;
 
-use Magento\TestModuleExtensionAttributes\Api\Data\FakeRegionExtension;
 use Magento\TestModuleExtensionAttributes\Model\Data\FakeRegionFactory;
+use Magento\TestModuleExtensionAttributes\Api\Data\FakeRegionExtension;
 
 /**
  * Test for \Magento\Framework\Api\AbstractExtensibleObject
