@@ -21,82 +21,84 @@
  * @copyright   Copyright (c) 2014 X.commerce, Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
- 
-	$welcomeMessage = $block->getWelcome();
- 
-	$_config = $this->helper('Sm\Maxshop\Helper\Data');
-	$_color = $_config->getGeneral('theme_color');
-	$_header = $_config->getGeneral('header_style');
+
+$welcomeMessage = $block->getWelcome();
+
+$_config = $this->helper('Sm\Maxshop\Helper\Data');
+$_color = $_config->getGeneral('theme_color');
+$_header = $_config->getGeneral('header_style');
 ?>
 
-<?php 
-	include ($block->getTemplateFile("Magento_Theme::html/header/" . $_header . ".phtml"));
+<?php
+include($block->getTemplateFile("Magento_Theme::html/header/" . $_header . ".phtml"));
 ?>
-<?php if($_config->getGeneral('menu_ontop')){ ?>
-	<script type="text/javascript">
-		require([
-			'jquery'
-		], function ($) {
-			<?php if($_header == "header-1" || $_header == null) {
-				$elon = '.header-style-1 .header-bottom';
-			}
+<?php if ($_config->getGeneral('menu_ontop')) { ?>
+    <script type="text/javascript">
+        require([
+            'jquery'
+        ], function ($) {
+            <?php if ($_header == "header-1" || $_header == null) {
+            $elon = '.header-style-1 .header-bottom';
+        }
 
-			if($_header == "header-2") {
-				$elon = '.header-style-2 .header-bottom';
-			}
+            if ($_header == "header-2") {
+                $elon = '.header-style-2 .header-bottom';
+            }
 
-			if($_header == "header-3") {
-				$elon = '.header-style-3 .header-bottom';
-			}
+            if ($_header == "header-3") {
+                $elon = '.header-style-3 .header-bottom';
+            }
 
-			if($_header == "header-4") {
-				$elon = '.header-style-4 .header-middle';
-			}
+            if ($_header == "header-4") {
+                $elon = '.header-style-4 .header-middle';
+            }
 
-			if($_header == "header-5") {
-				$elon = '.header-style-5 .header-bottom';
-			}
+            if ($_header == "header-5") {
+                $elon = '.header-style-5 .header-bottom';
+            }
 
-			if($_header == "header-6") {
-				$elon = '.header-style-6 .header-middle';
-			}
-			if($_header == "header-7") {
-				$elon = '.header-style-7 .header-bottom';
-			}
-			if($_header == "header-8") {
-				$elon = '.header-style-8 .header-bottom';
-			}
-			if($_header == "header-9") {
-				$elon = '.header-style-9 .header-bottom';
-			}
-			?>
-			$elon = '<?php echo $elon; ?>';
-			$window = $(window);
-			if($($elon).length){
-				menu_offset_top = $($elon).offset().top;
-				function processScroll() {
-					var scrollTop = $window.scrollTop();
-					if ( scrollTop >= menu_offset_top) {
-						$($elon).addClass('menu-ontop');
-					} else if (scrollTop <= menu_offset_top) {
-						$($elon).removeClass('menu-ontop');
-					}
-				}
-				processScroll();
-				$window.scroll(function(){
-					processScroll();
-				});
-			}
-		});
+            if ($_header == "header-6") {
+                $elon = '.header-style-6 .header-middle';
+            }
+            if ($_header == "header-7") {
+                $elon = '.header-style-7 .header-bottom';
+            }
+            if ($_header == "header-8") {
+                $elon = '.header-style-8 .header-bottom';
+            }
+            if ($_header == "header-9") {
+                $elon = '.header-style-9 .header-bottom';
+            }
+            ?>
+            $elon = '<?php echo $elon; ?>';
+            $window = $(window);
+            if ($($elon).length) {
+                menu_offset_top = $($elon).offset().top;
 
-	</script>
+                function processScroll() {
+                    var scrollTop = $window.scrollTop();
+                    if (scrollTop >= menu_offset_top) {
+                        $($elon).addClass('menu-ontop');
+                    } else if (scrollTop <= menu_offset_top) {
+                        $($elon).removeClass('menu-ontop');
+                    }
+                }
+
+                processScroll();
+                $window.scroll(function () {
+                    processScroll();
+                });
+            }
+        });
+
+    </script>
 <?php } ?>
 
 <script type="text/javascript">
-	require([
-		'jquery'
-	], function ($) {
-        $( ".btn-search-mobile" ).click(function() {
+    require([
+        'jquery'
+    ], function ($) {
+        $(".btn-search-mobile").click(function () {
             $('.search-pro').toggleClass('show')
             $(this).toggleClass('active')
         });

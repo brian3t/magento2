@@ -12,19 +12,23 @@
 $cssClass = $block->getCssClass() ? ' ' . $block->getCssClass() : '';
 $title = '';
 if (trim($block->getPageHeading())) {
-    $title = '<span class="base" data-ui-id="page-title-wrapper" ' .  $block->getAddBaseAttribute() . '>'
+    $title = '<span class="base" data-ui-id="page-title-wrapper" ' . $block->getAddBaseAttribute() . '>'
         . $block->escapeHtml($block->getPageHeading()) . '</span>';
 }
 ?>
 <?php if ($title): ?>
-<div class="page-title-wrapper<?= /* @escapeNotVerified */ $cssClass ?>">
-    <h2 class="page-title"
-        <?php if ($block->getId()): ?> id="<?= /* @escapeNotVerified */ $block->getId() ?>" <?php endif; ?>
-        <?php if ($block->getAddBaseAttributeAria()): ?>
-            aria-labelledby="<?= /* @escapeNotVerified */ $block->getAddBaseAttributeAria() ?>"
-        <?php endif; ?>>
-        <?= /* @escapeNotVerified */ $title ?>
-    </h2>
-    <?= $block->getChildHtml() ?>
-</div>
+    <div class="page-title-wrapper<?= /* @escapeNotVerified */
+    $cssClass ?>">
+        <h2 class="page-title"
+            <?php if ($block->getId()): ?> id="<?= /* @escapeNotVerified */
+            $block->getId() ?>" <?php endif; ?>
+            <?php if ($block->getAddBaseAttributeAria()): ?>
+                aria-labelledby="<?= /* @escapeNotVerified */
+                $block->getAddBaseAttributeAria() ?>"
+            <?php endif; ?>>
+            <?= /* @escapeNotVerified */
+            $title ?>
+        </h2>
+        <?= $block->getChildHtml() ?>
+    </div>
 <?php endif; ?>

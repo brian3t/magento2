@@ -29,8 +29,10 @@ class BasicProducts extends \Magento\Catalog\Block\Product\AbstractProduct
 	protected $localeDate;
 	protected $_scopeConfigInterface;
 	protected $_directory;
+	protected $_reviewFactory;
 
 	public function __construct(
+		\Magento\Review\Model\ReviewFactory $reviewFactory,
 		ResourceConnection $resourceConnection,
 		ObjectManagerInterface $objectManager,
 		ResolverInterface $localeResolver,
@@ -50,6 +52,7 @@ class BasicProducts extends \Magento\Catalog\Block\Product\AbstractProduct
 		$this->_directory = $this->_objectManager->get('\Magento\Framework\Filesystem');
 		$this->_storeId = (int)$this->_storeManager->getStore()->getId();
 		$this->_config = $this->_getCfg($attr, $data);
+		$this->_reviewFactory = $reviewFactory;
 		parent::__construct($context, $data);
 	}
 	
@@ -517,4 +520,10 @@ class BasicProducts extends \Magento\Catalog\Block\Product\AbstractProduct
             ]
         ];
     }
+	public function getRatingSummary(\Magento\Catalog\Model\Product $product)
+	{
+		$this->_reviewFactory->create()->getEntitySummary($product, $this->_storeManager->getStore()->getId());
+		$ratingSummary = $product->getRatingSummary()->getRatingSummary();
+		return $ratingSummary; 
+	}
 }

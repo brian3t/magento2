@@ -227,59 +227,55 @@
 			
 			<group id="product_detail" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
 				<label>Product Detail</label>
-
-				<field id="related_upsell_heading" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+				<field id="related_upsell_heading" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
 					<label>Related - Upsell Product</label>
 					<frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
 				</field>
 				
-				<field id="show_related" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<field id="show_related" translate="label" type="select" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
 					<label>Enable Related Product</label>
 					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
 				</field>
 				
-				<field id="related_limit" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+				<field id="related_limit" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
 					<label>Related Product Limitation</label>
 					<depends>
 						<field id="show_related">1</field>
 					</depends>
 				</field>
 				
-				<field id="show_upsell" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+				<field id="show_upsell" translate="label" type="select" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="1">
 					<label>Enable Upsell Product</label>
 					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
 				</field>
 				
-				<field id="upsell_limit" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+				<field id="upsell_limit" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
 					<label>Upsell Product Limitation</label>
 					<depends>
 						<field id="show_upsell">1</field>
 					</depends>
 				</field>
 				
-				<!-- <field id="custom_tab_heading" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-					<label>Custom Tab</label>
-					<frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
-				</field>
 				
-				<field id="show_custom_tab" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+				
+				<field id="show_custom_tab" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
 					<label>Show Custom Tab</label>
 					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
 				</field>
 				
-				<field id="custom_tab_name" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+				<field id="custom_tab_name" translate="label" type="text" sortOrder="105" showInDefault="1" showInWebsite="1" showInStore="1">
 					<label>Custom Tab Name</label>
 					<depends>
 						<field id="show_custom_tab">1</field>
 					</depends>
 				</field>
 				
-				<field id="customtab_content" translate="label" type="textarea" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+				<field id="customtab_content" translate="label" type="textarea" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
 					<label>Custom Tab Content</label>
 					<depends>
 						<field id="show_custom_tab">1</field>
 					</depends>
-				</field> -->
+				</field>
 
 			</group>
 			
@@ -577,7 +573,7 @@
 				<label>Product Information</label>
 				<field id="author" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
 					<label><![CDATA[<p>Author: <a target="_blank" title="Magentech" href="http://www.magentech.com">Magentech</a></p>
-											<p>Vesion: 3.4.0</p>
+											<p>Vesion: 4.2.0</p>
 											<p>Userguide: <a target="_blank" title="Usergide" href="http://www.magentech.com/documentation/sm-maxshop/">Userguide</a></p>
 											<p>Support: <a target="_blank" href="http://www.magentech.com/forum">http://www.magentech.com/forum</a></p>
 								]]></label>

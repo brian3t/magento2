@@ -6,7 +6,7 @@
  * Author: YouTech Company
  * Websites: http://www.magentech.com
  */
- 
+
 define([
     'jquery',
     'Magento_Customer/js/model/authentication-popup',
@@ -17,7 +17,7 @@ define([
     'mage/decorate',
     'mage/collapsible',
     'mage/cookies',
-	'ajaxCart'
+    'ajaxCart'
 ], function ($, authenticationPopup, customerData, alert, confirm) {
 
     $.widget('mage.sidebar', {
@@ -26,10 +26,10 @@ define([
             minicart: {
                 maxItemsVisible: 3
             },
-			minicartSelector: '[data-block="minicart"]',
-			actionEdit : '.action.edit',
-			urlRemoveItem: window.checkout.baseUrl+'cartquickpro/sidebar/removeItem/',
-			urlUpdateItemQty: window.checkout.baseUrl+'cartquickpro/sidebar/updateItemQty/'
+            minicartSelector: '[data-block="minicart"]',
+            actionEdit: '.action.edit',
+            urlRemoveItem: window.checkout.baseUrl + 'cartquickpro/sidebar/removeItem/',
+            urlUpdateItemQty: window.checkout.baseUrl + 'cartquickpro/sidebar/updateItemQty/'
         },
         scrollHeight: 0,
 
@@ -77,10 +77,10 @@ define([
                 }
                 location.href = this.options.url.checkout;
             }, this);
-            events['click ' + this.options.button.remove] =  function (event) {
+            events['click ' + this.options.button.remove] = function (event) {
                 event.stopPropagation();
                 confirm({
-					modalClass: typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart ?  'smcqp-confirm' : '',
+                    modalClass: typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart ? 'smcqp-confirm' : '',
                     content: self.options.confirmMessage,
                     actions: {
                         confirm: function () {
@@ -102,16 +102,16 @@ define([
             events['focusout ' + this.options.item.qty] = function (event) {
                 self._validateQty($(event.currentTarget));
             };
-			if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart){
-				events['click ' + this.options.actionEdit] = function (event) {
-					event.stopPropagation();
-					event.preventDefault();
-					var _url =  $(event.currentTarget).attr('href');
-					 $(self.options.targetElement).dropdownDialog('close');
-					window.ajaxCart._requestQuickview(_url);
-					return false;
-				};
-			}
+            if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart) {
+                events['click ' + this.options.actionEdit] = function (event) {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    var _url = $(event.currentTarget).attr('href');
+                    $(self.options.targetElement).dropdownDialog('close');
+                    window.ajaxCart._requestQuickview(_url);
+                    return false;
+                };
+            }
             this._on(this.element, events);
             this._calcHeight();
             this._isOverflowed();
@@ -152,7 +152,7 @@ define([
          * @returns {boolean}
          * @private
          */
-         _isValidQty: function (origin, changed) {
+        _isValidQty: function (origin, changed) {
             return origin != changed && //eslint-disable-line eqeqeq
                 changed.length > 0 &&
                 changed - 0 == changed && //eslint-disable-line eqeqeq
@@ -178,17 +178,17 @@ define([
 
         _updateItemQty: function (elem) {
             var itemId = elem.data('cart-item');
-			if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart){
-				this._ajax(this.options.urlUpdateItemQty, {
-					item_id: itemId,
-					item_qty: $('#cart-item-' + itemId + '-qty').val()
-				}, elem, this._updateItemQtyAfter);
-			}else{
-				this._ajax(this.options.url.update, {
-					item_id: itemId,
-					item_qty: $('#cart-item-' + itemId + '-qty').val()
-				}, elem, this._updateItemQtyAfter);
-			}
+            if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart) {
+                this._ajax(this.options.urlUpdateItemQty, {
+                    item_id: itemId,
+                    item_qty: $('#cart-item-' + itemId + '-qty').val()
+                }, elem, this._updateItemQtyAfter);
+            } else {
+                this._ajax(this.options.url.update, {
+                    item_id: itemId,
+                    item_qty: $('#cart-item-' + itemId + '-qty').val()
+                }, elem, this._updateItemQtyAfter);
+            }
         },
 
         /**
@@ -198,24 +198,24 @@ define([
          * @param response
          */
         _updateItemQtyAfter: function (elem, response) {
-			this._hideItemButton(elem);
-			if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart){
-				window.ajaxCart._afterAjax(response);
-			}	
-            
+            this._hideItemButton(elem);
+            if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart) {
+                window.ajaxCart._afterAjax(response);
+            }
+
         },
 
         _removeItem: function (elem) {
             var itemId = elem.data('cart-item');
-			if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart){
-				this._ajax(this.options.urlRemoveItem, {
-					item_id: itemId
-				}, elem, this._removeItemAfter);
-			}else{
-				this._ajax(this.options.url.remove, {
-					item_id: itemId
-				}, elem, this._removeItemAfter);
-			}
+            if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart) {
+                this._ajax(this.options.urlRemoveItem, {
+                    item_id: itemId
+                }, elem, this._removeItemAfter);
+            } else {
+                this._ajax(this.options.url.remove, {
+                    item_id: itemId
+                }, elem, this._removeItemAfter);
+            }
         },
 
         /**
@@ -226,11 +226,11 @@ define([
          * @private
          */
         _removeItemAfter: function (elem, response) {
-			if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart){
-				window.ajaxCart._afterAjax(response);
-			}
+            if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart) {
+                window.ajaxCart._afterAjax(response);
+            }
         },
-		
+
         /**
          * @param {String} url - ajax url
          * @param {Object} data - post data for ajax call
@@ -238,25 +238,25 @@ define([
          * @param {Function} callback - callback method to execute after AJAX success
          */
         _ajax: function (url, data, elem, callback) {
-			if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart){
-				var _self = this , _options = _self.options;
-				$.extend(data, {
-					'form_key': $.mage.cookies.get('form_key')
-				});
-				if (window.ajaxCart._isCheckoutPage()){
-					$.extend(data, {
-						'isCheckoutPage': 1
-					});
-				}else if (window.ajaxCart._isComparePage()){
-					$.extend(data, {
-						'isComparePage': 1
-					});
-				}else if (window.ajaxCart._isWishlistPage()){
-					$.extend(data, {
-						'isWishlistPage': 1
-					});
-				}
-			}
+            if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart) {
+                var _self = this, _options = _self.options;
+                $.extend(data, {
+                    'form_key': $.mage.cookies.get('form_key')
+                });
+                if (window.ajaxCart._isCheckoutPage()) {
+                    $.extend(data, {
+                        'isCheckoutPage': 1
+                    });
+                } else if (window.ajaxCart._isComparePage()) {
+                    $.extend(data, {
+                        'isComparePage': 1
+                    });
+                } else if (window.ajaxCart._isWishlistPage()) {
+                    $.extend(data, {
+                        'isWishlistPage': 1
+                    });
+                }
+            }
             $.ajax({
                 url: url,
                 data: data,
@@ -264,11 +264,11 @@ define([
                 dataType: 'json',
                 context: this,
                 beforeSend: function () {
-					if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart){
-						$(_options.targetElement).dropdownDialog('close');
-						$(_options.minicartSelector).trigger('contentLoading');
-						window.ajaxCart._showLoader();
-					}
+                    if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart) {
+                        $(_options.targetElement).dropdownDialog('close');
+                        $(_options.minicartSelector).trigger('contentLoading');
+                        window.ajaxCart._showLoader();
+                    }
                     elem.attr('disabled', 'disabled');
                 },
                 complete: function () {
@@ -277,12 +277,12 @@ define([
             })
                 .done(function (response) {
                     if (response.success) {
-						if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart){
-							$(_options.minicartSelector).trigger('contentUpdated');
-						}
+                        if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart) {
+                            $(_options.minicartSelector).trigger('contentUpdated');
+                        }
                         callback.call(this, elem, response);
                     } else {
-						callback.call(this, elem, response);
+                        callback.call(this, elem, response);
                         var msg = response.error_message;
 
                         if (msg) {

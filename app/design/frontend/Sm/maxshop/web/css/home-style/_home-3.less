@@ -29,6 +29,7 @@
         position: absolute;
         right: 15px;
         top: 0px;
+
         li {
             margin-bottom: 10px;
         }
@@ -47,6 +48,7 @@
     transition: 0.2s;
     -moz-transition: 0.2s;
     -webkit-transition: 0.2s;
+
     &:hover {
         .opacity(0.8);
     }
@@ -57,9 +59,11 @@
         .title-home {
             border: 1px solid #ddd;
             margin: -1px 0 20px;
+
             h2 span {
                 background: none;
                 color: inherit;
+
                 &:before {
                     position: absolute;
                     left: -1px;
@@ -74,13 +78,16 @@
                 }
             }
         }
+
         &.sm-super-categories {
             .title-home {
                 margin-bottom: 0;
             }
+
             .category-wrap .container-slider {
                 top: 3px;
             }
+
             @media (min-width: 1200px) {
                 .spctabs-wrap {
                     margin: 0;
@@ -88,14 +95,17 @@
                 }
             }
         }
+
         @media (min-width: 1200px) {
             &.deal-wrapper .owl-nav-custom > div {
                 margin-top: 10px;
             }
         }
     }
+
     .sidebar .block, .sidebar .block-banners, .sidebar .block-banners-inline {
         margin-bottom: 30px;
+
         .block-title {
             border: 1px solid #ddd;
             margin: -1px -19px 0 -19px;
@@ -103,6 +113,7 @@
             strong {
                 background: none;
                 color: inherit;
+
                 &:before {
                     position: absolute;
                     left: -1px;
@@ -118,6 +129,7 @@
             }
         }
     }
+
     .sidebar {
         .block {
             .customNavigation .btn-bs,
@@ -128,6 +140,7 @@
                 border: 1px solid #ddd;
                 font-size: 16px;
                 margin: 6px 2px;
+
                 &:before {
                     color: #999;
                     width: 24px;
@@ -135,25 +148,31 @@
                     font-size: 16px;
                     line-height: 24px;
                 }
+
                 &:hover {
                     background: @color_theme;
                     border-color: @color_theme;
                     color: #fff;
+
                     &:before {
                         color: #fff;
                     }
                 }
             }
+
             .customNavigation {
                 top: 1px;
                 right: 5px;
+
                 .btn-bs {
                     margin: 6px 1px;
                 }
 
             }
+
             &.products-sidebar {
                 position: relative;
+
                 &:before {
                     content: "";
                     top: 0;
@@ -166,9 +185,11 @@
                     position: absolute;
                     border-bottom: 1px solid #ddd;
                 }
+
                 .block-title.filter-title {
                     margin-bottom: 30px;
                 }
+
                 .owl-controls {
                     top: -67px;
                     right: -13px;

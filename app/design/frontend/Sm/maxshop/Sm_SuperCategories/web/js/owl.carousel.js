@@ -339,8 +339,8 @@
                 css[this.settings.rtl ? 'margin-left' : 'margin-right'] = this.settings.margin;
 
                 if (!this.settings.autoWidth && $.grep(this._mergers, function (v) {
-                        return v > 1
-                    }).length > 0) {
+                    return v > 1
+                }).length > 0) {
                     for (i = 0, n = this._coordinates.length; i < n; i++) {
                         css.width = Math.abs(this._coordinates[i]) - Math.abs(this._coordinates[i - 1] || 0) - this.settings.margin;
                         this.$stage.children().eq(i).css(css);
@@ -755,7 +755,7 @@
 
         if (this.settings.rtl) {
             this.drag.offsetX = this.$stage.position().left + this.$stage.width() - this.width()
-            + this.settings.margin;
+                + this.settings.margin;
         }
 
         // catch position // ie to fix
@@ -2289,18 +2289,18 @@
 
         if (video.type === 'youtube') {
             html = '<iframe width="' + width + '" height="' + height + '" src="http://www.youtube.com/embed/'
-            + video.id + '?autoplay=1&v=' + video.id + '" frameborder="0" allowfullscreen></iframe>';
+                + video.id + '?autoplay=1&v=' + video.id + '" frameborder="0" allowfullscreen></iframe>';
         } else if (video.type === 'vimeo') {
             html = '<iframe src="http://player.vimeo.com/video/' + video.id + '?autoplay=1" width="' + width
-            + '" height="' + height
-            + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+                + '" height="' + height
+                + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
         }
 
         item.addClass('owl-video-playing');
         this._playing = item;
 
         wrap = $('<div style="height:' + height + 'px; width:' + width + 'px" class="owl-video-frame">'
-        + html + '</div>');
+            + html + '</div>');
         target.after(wrap);
     };
 

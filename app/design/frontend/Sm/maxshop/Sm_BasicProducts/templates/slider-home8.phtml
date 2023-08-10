@@ -6,7 +6,9 @@
 # Author: YouTech Company
 # Websites: http://www.magentech.com
 -------------------------------------------------------------------------*/
+
 use Magento\Framework\App\Action\Action;
+
 $list = $block->_getSelectSource();
 $helper = $this->_helper();
 $limitation = $this->_getConfig('product_limitation');
@@ -17,263 +19,286 @@ $screen2 = $this->_getConfig('nb_column2');
 $screen3 = $this->_getConfig('nb_column3');
 $screen4 = $this->_getConfig('nb_column4');
 $screen5 = $this->_getConfig('nb_column5');
-	
-if (!empty($list)) { $uniqued = 'sm_basic_products_' . time() . rand();?>
-<div id="<?php echo $uniqued ?>" class="slider-basic-products">
-    <?php if ($this->_getConfig('pretext') != null) { ?>
-		<div class="bs-pretext">
-			<?php echo $this->_getConfig('pretext'); ?>
-		</div>
-	<?php } ?>
 
-	<?php if ($this->_getConfig('display_title', 1)) { ?>
-		<?php if ($this->_getConfig('title')) { ?>
-			<div class="title-home">
-				<h2><?php echo $this->_getConfig('title', 'Sm Basic Products'); ?></h2>
-			</div>
+if (!empty($list)) {
+    $uniqued = 'sm_basic_products_' . time() . rand(); ?>
+    <div id="<?php echo $uniqued ?>" class="slider-basic-products">
+        <?php if ($this->_getConfig('pretext') != null) { ?>
+            <div class="bs-pretext">
+                <?php echo $this->_getConfig('pretext'); ?>
+            </div>
+        <?php } ?>
 
-		<?php } ?>
-	<?php } ?>
+        <?php if ($this->_getConfig('display_title', 1)) { ?>
+            <?php if ($this->_getConfig('title')) { ?>
+                <div class="title-home">
+                    <h2><?php echo $this->_getConfig('title', 'Sm Basic Products'); ?></h2>
+                </div>
 
-    <div class="slider-basic-content">
+            <?php } ?>
+        <?php } ?>
 
-		<div class="bs-items products-grid">
-       
-         <?php  $j = 0;
-            $count = 0; 
-        	foreach ($list as $_product) {
-            $count++;
-            
-             if($count<=$limitation) {                    
-                if ($count % $nb_rows == 1 || $nb_rows == 1) { 
-                     echo '<div class="row-item">';
-                     }
-         ?>
-            <!-- Begin bs-item-cf -->
-            <div class="item bs-item">
-                <!-- Begin bs-item-inner -->
-                <div class="item-inner">
-					<?php if ($_product->_image) { ?>
-					
-	                <div class="box-image">
-						<a href="<?php echo $_product->link ?>"
-						   title="<?php echo $_product->title; ?>"
-							<?php echo $helper->parseTarget($this->_getConfig('target')); ?>
-							>
-							<img src="<?php echo $_product->_image; ?>"
-								 title="<?php echo $_product->title; ?>"
-								 alt="<?php echo $_product->title; ?>" >
-						</a>
+        <div class="slider-basic-content">
 
-	                    <!--LABEL PRODUCT-->
+            <div class="bs-items products-grid">
 
-	                    <?php
-	                    $specialprice = $_product->getSpecialPrice();
-	                    $specialPriceFromDate = $_product->getSpecialFromDate();
-	                    $specialPriceToDate = $_product->getSpecialToDate();
+                <?php $j = 0;
+                $count = 0;
+                foreach ($list as $_product) {
+                    $count++;
 
-	                    $today = time();
+                    if ($count <= $limitation) {
+                        if ($count % $nb_rows == 1 || $nb_rows == 1) {
+                            echo '<div class="row-item">';
+                        }
+                        ?>
+                        <!-- Begin bs-item-cf -->
+                        <div class="item bs-item">
+                            <!-- Begin bs-item-inner -->
+                            <div class="item-inner">
+                                <?php if ($_product->_image) { ?>
 
-	                    if ($specialprice) {
-	                        if ($today >= strtotime($specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime($specialPriceFromDate) && is_null($specialPriceToDate)) { ?>
-	                            <div class="label-product label-sale">
+                                    <div class="box-image">
+                                        <a href="<?php echo $_product->link ?>"
+                                           title="<?php echo $_product->title; ?>"
+                                            <?php echo $helper->parseTarget($this->_getConfig('target')); ?>
+                                        >
+                                            <img src="<?php echo $_product->_image; ?>"
+                                                 title="<?php echo $_product->title; ?>"
+                                                 alt="<?php echo $_product->title; ?>">
+                                        </a>
+
+                                        <!--LABEL PRODUCT-->
+
+                                        <?php
+                                        $specialprice = $_product->getSpecialPrice();
+                                        $specialPriceFromDate = $_product->getSpecialFromDate();
+                                        $specialPriceToDate = $_product->getSpecialToDate();
+
+                                        $today = time();
+
+                                        if ($specialprice) {
+                                            if ($today >= strtotime($specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime($specialPriceFromDate) && is_null($specialPriceToDate)) { ?>
+                                                <div class="label-product label-sale">
 												<span class="sale-product-icon">
 													<?php echo __('Sale'); ?>
 												</span>
-	                            </div>
-	                        <?php }
-	                    }
-	                    ?>
+                                                </div>
+                                            <?php }
+                                        }
+                                        ?>
 
-	                    <?php
-	                    $now = date("Y-m-d");
-	                    $newsFrom = substr($_product->getNewsFromDate(), 0, 10);
-	                    $newsTo = substr($_product->getNewsToDate(), 0, 10);
+                                        <?php
+                                        $now = date("Y-m-d");
+                                        $newsFrom = substr($_product->getNewsFromDate(), 0, 10);
+                                        $newsTo = substr($_product->getNewsToDate(), 0, 10);
 
-	                    if ($newsTo != '' || $newsFrom != '') {
-	                        if (($newsTo != '' && $newsFrom != '' && $now >= $newsFrom && $now <= $newsTo) || ($newsTo == '' && $now >= $newsFrom) || ($newsFrom == '' && $now <= $newsTo)) {?>
-	                            <div class="label-product label-new">
-	                                <span class="new-product-icon"><?php echo __('New'); ?></span>
-	                            </div>
-	                        <?php }
-	                    } ?>
+                                        if ($newsTo != '' || $newsFrom != '') {
+                                            if (($newsTo != '' && $newsFrom != '' && $now >= $newsFrom && $now <= $newsTo) || ($newsTo == '' && $now >= $newsFrom) || ($newsFrom == '' && $now <= $newsTo)) { ?>
+                                                <div class="label-product label-new">
+                                                    <span class="new-product-icon"><?php echo __('New'); ?></span>
+                                                </div>
+                                            <?php }
+                                        } ?>
 
-	                    <!--END LABEL PRODUCT-->
+                                        <!--END LABEL PRODUCT-->
 
-	                    <?php if ((int)$this->_getConfig('product_addcart_display', 1) ||(int)$this->_getConfig('product_addwishlist_display', 1) || (int)$this->_getConfig('product_addcompare_display', 1)) { ?>
-	                        <div class="bottom-action">
-	                            <a style="display: none;" href="<?php echo $_product->link;?>">&nbsp;</a>
-								
-									<?php if ((int)$this->_getConfig('product_addcart_display', 1)) { ?>
-									 <?php if ($_product->isSaleable()): ?>
-                                        <?php $postParams = $block->getAddToCartPostParams($_product); ?>
-                                        <form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $postParams['action']; ?>" method="post">
-                                            <input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
-                                            <input type="hidden" name="<?php /* @escapeNotVerified */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
-                                            <?php echo $block->getBlockHtml('formkey')?>
-                                            <button data-toggle="tooltip" data-placement="left" type="submit" title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>" class="action tocart btn-action btn-cart">
-                                                <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
-                                            </button>
-                                        </form>
-	                                    <?php else: ?>
-	                                        <?php if ($_product->getIsSalable()): ?>
-	                                            <div class="stock available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
-	                                        <?php else: ?>
-	                                            <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
-	                                        <?php endif; ?>
-	                                    <?php endif; ?>
-									<?php } ?>
+                                        <?php if ((int)$this->_getConfig('product_addcart_display', 1) || (int)$this->_getConfig('product_addwishlist_display', 1) || (int)$this->_getConfig('product_addcompare_display', 1)) { ?>
+                                            <div class="bottom-action">
+                                                <a style="display: none;"
+                                                   href="<?php echo $_product->link; ?>">&nbsp;</a>
 
-									<?php if ((int)$this->_getConfig('product_addwishlist_display', 1) || (int)$this->_getConfig('product_addcompare_display', 1)) { ?>
-										<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && (int)$this->_getConfig('product_addwishlist_display', 1) ){ ?>
-											<a href="#" data-post='<?php  echo $block->getAddToWishlistParams($_product); ?>'  class="btn-action link-wishlist towishlist" data-action="add-to-wishlist" data-toggle="tooltip" data-placement="left" title="<?php  echo __('Add to Wish List') ?>">
-												<span><?php  echo __('Add to Wish List') ?></span>
-											</a>
-										<?php } ?>
-										<?php if ($block->getAddToCompareUrl() &&  (int)$this->_getConfig('product_addcompare_display', 1)){ ?>
-											<?php
-											$compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare');
-											?>
-											<a href="#" class="btn-action link-compare tocompare"
-											   data-post='<?php  echo $compareHelper->getPostDataParams($_product);?>'
-											   data-role="add-to-links"
-											   data-toggle="tooltip" data-placement="left" 
-											   title="<?php  echo __('Add to Compare'); ?>">
-												<span><?php  echo __('Add to Compare') ?></span>
-											</a>
-										<?php }; ?>
-									<?php } ?>							
-	                        </div>
-	                    <?php } ?>	<!--END ACTION-->
+                                                <?php if ((int)$this->_getConfig('product_addcart_display', 1)) { ?>
+                                                    <?php if ($_product->isSaleable()): ?>
+                                                        <?php $postParams = $block->getAddToCartPostParams($_product); ?>
+                                                        <form data-role="tocart-form"
+                                                              action="<?php /* @escapeNotVerified */
+                                                              echo $postParams['action']; ?>" method="post">
+                                                            <input type="hidden" name="product"
+                                                                   value="<?php /* @escapeNotVerified */
+                                                                   echo $postParams['data']['product']; ?>">
+                                                            <input type="hidden" name="<?php /* @escapeNotVerified */
+                                                            echo Action::PARAM_NAME_URL_ENCODED; ?>"
+                                                                   value="<?php /* @escapeNotVerified */
+                                                                   echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
+                                                            <?php echo $block->getBlockHtml('formkey') ?>
+                                                            <button data-toggle="tooltip" data-placement="left"
+                                                                    type="submit"
+                                                                    title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
+                                                                    class="action tocart btn-action btn-cart">
+                                                                <span><?php /* @escapeNotVerified */
+                                                                    echo __('Add to Cart') ?></span>
+                                                            </button>
+                                                        </form>
+                                                    <?php else: ?>
+                                                        <?php if ($_product->getIsSalable()): ?>
+                                                            <div class="stock available">
+                                                                <span><?php /* @escapeNotVerified */
+                                                                    echo __('In stock') ?></span></div>
+                                                        <?php else: ?>
+                                                            <div class="stock unavailable">
+                                                                <span><?php /* @escapeNotVerified */
+                                                                    echo __('Out of stock') ?></span></div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                <?php } ?>
 
-	                </div>		
+                                                <?php if ((int)$this->_getConfig('product_addwishlist_display', 1) || (int)$this->_getConfig('product_addcompare_display', 1)) { ?>
+                                                    <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && (int)$this->_getConfig('product_addwishlist_display', 1)) { ?>
+                                                        <a href="#"
+                                                           data-post='<?php echo $block->getAddToWishlistParams($_product); ?>'
+                                                           class="btn-action link-wishlist towishlist"
+                                                           data-action="add-to-wishlist" data-toggle="tooltip"
+                                                           data-placement="left"
+                                                           title="<?php echo __('Add to Wish List') ?>">
+                                                            <span><?php echo __('Add to Wish List') ?></span>
+                                                        </a>
+                                                    <?php } ?>
+                                                    <?php if ($block->getAddToCompareUrl() && (int)$this->_getConfig('product_addcompare_display', 1)) { ?>
+                                                        <?php
+                                                        $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare');
+                                                        ?>
+                                                        <a href="#" class="btn-action link-compare tocompare"
+                                                           data-post='<?php echo $compareHelper->getPostDataParams($_product); ?>'
+                                                           data-role="add-to-links"
+                                                           data-toggle="tooltip" data-placement="left"
+                                                           title="<?php echo __('Add to Compare'); ?>">
+                                                            <span><?php echo __('Add to Compare') ?></span>
+                                                        </a>
+                                                    <?php }; ?>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?> <!--END ACTION-->
 
-					<?php }?>
+                                    </div>
 
-					<!-- Begin spc-content -->
+                                <?php } ?>
 
-					<div class="box-info">
-						<?php if ((int)$this->_getConfig('product_reviews_count', 1)) { ?>
-							<div class="rating-box">
-								<?php
-								$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
-								echo $block->getReviewsSummaryHtml($_product,$templateType);
-								?>
-							</div>
-						<?php } ?>
+                                <!-- Begin spc-content -->
 
-						<?php if ((int)$this->_getConfig('product_title_display', 1)) { ?>
-							<h2 class="product-name">
-								<a href="<?php echo $_product->link; ?>" title="<?php echo $_product->title; ?>"
-									<?php echo $helper->parseTarget($this->_getConfig('target')); ?>
-									>
-									<?php echo $helper->truncate($_product->title, $this->_getConfig('product_title_maxlength')); ?>
-								</a>
-							</h2>
-						<?php } ?>
+                                <div class="box-info">
+                                    <?php if ((int)$this->_getConfig('product_reviews_count', 1)) { ?>
+                                        <div class="rating-box">
+                                            <?php
+                                            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+                                            echo $block->getReviewsSummaryHtml($_product, $templateType);
+                                            ?>
+                                        </div>
+                                    <?php } ?>
 
-						<?php if ($this->_getConfig('product_description_display') == 1 && $helper->_trimEncode($_product->_description)) { ?>
-							<div class="bs-description">
-								<?php echo $_product->_description; ?>
-							</div>
-						<?php } ?>
-						
-						<?php if ($this->_getConfig('cat_title_display') == 1 && $this->_getConfig('product_source') != 'media') { ?>
-							<div class="bs-category"><?php echo __('Category:&nbsp') ;?>
-								<a  href="<?php echo $_product->cat_link; ?>"  title="<?php echo $_product->cat_title; ?>"  <?php echo $helper->parseTarget($this->_getConfig('target')); ?>>
-									<?php echo  $helper->truncate($_product->cat_title, $this->_getConfig('category_title_max_characs', 25)); ?>
-								</a>
+                                    <?php if ((int)$this->_getConfig('product_title_display', 1)) { ?>
+                                        <h2 class="product-name">
+                                            <a href="<?php echo $_product->link; ?>"
+                                               title="<?php echo $_product->title; ?>"
+                                                <?php echo $helper->parseTarget($this->_getConfig('target')); ?>
+                                            >
+                                                <?php echo $helper->truncate($_product->title, $this->_getConfig('product_title_maxlength')); ?>
+                                            </a>
+                                        </h2>
+                                    <?php } ?>
 
-							</div>
-						<?php } ?>
+                                    <?php if ($this->_getConfig('product_description_display') == 1 && $helper->_trimEncode($_product->_description)) { ?>
+                                        <div class="bs-description">
+                                            <?php echo $_product->_description; ?>
+                                        </div>
+                                    <?php } ?>
 
-						<?php if ($this->_getConfig('product_source') != 'media') { ?>
+                                    <?php if ($this->_getConfig('cat_title_display') == 1 && $this->_getConfig('product_source') != 'media') { ?>
+                                        <div class="bs-category"><?php echo __('Category:&nbsp'); ?>
+                                            <a href="<?php echo $_product->cat_link; ?>"
+                                               title="<?php echo $_product->cat_title; ?>" <?php echo $helper->parseTarget($this->_getConfig('target')); ?>>
+                                                <?php echo $helper->truncate($_product->cat_title, $this->_getConfig('category_title_max_characs', 25)); ?>
+                                            </a>
+
+                                        </div>
+                                    <?php } ?>
+
+                                    <?php if ($this->_getConfig('product_source') != 'media') { ?>
 
 
-							<?php if ((int)$this->_getConfig('product_price_display', 1)) { ?>
-								<div class="price-box">
-									<div class="sale-price">
-										<?php echo $this->getProductPrice($_product); ?>
-									</div>
-								</div>
-							<?php } ?>
+                                        <?php if ((int)$this->_getConfig('product_price_display', 1)) { ?>
+                                            <div class="price-box">
+                                                <div class="sale-price">
+                                                    <?php echo $this->getProductPrice($_product); ?>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
 
-						<?php } ?>
+                                    <?php } ?>
 
-						<?php if ($this->_getConfig('product_readmore_display') == 1) { ?>
-							<div class="bs-detail">
-								<a href="<?php echo $_product->link ?>"
-								   title="<?php echo $_product->title; ?>"
-									<?php echo $helper->parseTarget($this->_getConfig('target')); ?>
-									>
-									<?php echo $this->_getConfig('product_readmore_text', 'Details'); ?>
-								</a>
-							</div>
-						<?php } ?>
-					</div>
-				
-				</div>
-                <!-- End bs-item-inner -->
-            </div><!-- End bs-item-cf -->
-            <?php 
-            
-           		if (($count % $nb_rows == 0 || $count == count($list) )) {
-                        echo '</div>'; // endrow
+                                    <?php if ($this->_getConfig('product_readmore_display') == 1) { ?>
+                                        <div class="bs-detail">
+                                            <a href="<?php echo $_product->link ?>"
+                                               title="<?php echo $_product->title; ?>"
+                                                <?php echo $helper->parseTarget($this->_getConfig('target')); ?>
+                                            >
+                                                <?php echo $this->_getConfig('product_readmore_text', 'Details'); ?>
+                                            </a>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+
+                            </div>
+                            <!-- End bs-item-inner -->
+                        </div><!-- End bs-item-cf -->
+                        <?php
+
+                        if (($count % $nb_rows == 0 || $count == count($list))) {
+                            echo '</div>'; // endrow
+                        }
+                        ?>
+                    <?php }
                 }
-            ?> 
-        <?php } 
-    	}
-        ?>
-		</div>
+                ?>
+            </div>
 
-		
-		
-		<script type="text/javascript">
-			require([
-				'jquery',
-				'owlcarousel'
-			], function ($) {
-				var bs_slider = $(".slider-basic-content .bs-items");
-				bs_slider.owlCarousel({				
-					responsive:{
-						0:{
-							items:<?php echo $screen5;?>
-						},
-						480:{
-							items:<?php echo $screen4;?>
-						},
-						768:{
-							items:<?php echo $screen3;?>
-						},
-						992:{
-							items:<?php echo $screen2;?>
-						},
-						1200:{
-							items:<?php echo $screen1;?>
-						}
-					},
-					autoplay:false,
-					loop:true,
-					nav : true, // Show next and prev buttons
-					dots: false,
-					autoplaySpeed : 500,
-					navSpeed : 500,
-					dotsSpeed : 500,
-					autoplayHoverPause: true,
-					margin:0,
-				});	  
-			});	
-		</script>
-        <!-- End bs-items -->
-    </div><!-- End Sm-basic-products -->
-   <?php if ($this->_getConfig('posttext') != null) { ?>
-		<div class="bs-posttext">
-			<?php echo $this->_getConfig('posttext'); ?>
-		</div>
-	<?php } ?>
-</div>	
-<?php
+
+            <script type="text/javascript">
+                require([
+                    'jquery',
+                    'owlcarousel'
+                ], function ($) {
+                    var bs_slider = $(".slider-basic-content .bs-items");
+                    bs_slider.owlCarousel({
+                        responsive: {
+                            0: {
+                                items:<?php echo $screen5;?>
+                            },
+                            480: {
+                                items:<?php echo $screen4;?>
+                            },
+                            768: {
+                                items:<?php echo $screen3;?>
+                            },
+                            992: {
+                                items:<?php echo $screen2;?>
+                            },
+                            1200: {
+                                items:<?php echo $screen1;?>
+                            }
+                        },
+                        autoplay: false,
+                        loop: true,
+                        nav: true, // Show next and prev buttons
+                        dots: false,
+                        autoplaySpeed: 500,
+                        navSpeed: 500,
+                        dotsSpeed: 500,
+                        autoplayHoverPause: true,
+                        margin: 0,
+                    });
+                });
+            </script>
+            <!-- End bs-items -->
+        </div><!-- End Sm-basic-products -->
+        <?php if ($this->_getConfig('posttext') != null) { ?>
+            <div class="bs-posttext">
+                <?php echo $this->_getConfig('posttext'); ?>
+            </div>
+        <?php } ?>
+    </div>
+    <?php
 } else {
-	echo 'Has no content to show!';
+    echo 'Has no content to show!';
 }
 ?>

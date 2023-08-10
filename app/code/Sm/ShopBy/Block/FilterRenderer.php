@@ -41,8 +41,8 @@ class FilterRenderer extends \Magento\LayeredNavigation\Block\Navigation\FilterR
 				$currencyRate = $storeManager->getStore()->getCurrentCurrencyRate();
 				$priceArr = $filter->getResource()->loadPrices(10000000000);
 				$return['rate'] = $currencyRate;
-				$return['min_standard'] = (float) reset($priceArr);
-				$return['max_standard'] = (float) end($priceArr);
+				$return['min_standard'] = $collection->getMinPrice();
+				$return['max_standard'] = $collection->getMaxPrice();
 				$return['min_value'] = $return['min_standard'];
 				$return['max_value'] = $return['max_standard'];
 				$requestPrice = $this->getRequest()->getParam('price');

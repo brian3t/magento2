@@ -175,16 +175,17 @@ class Edit extends \Magento\Backend\App\Action
 				$id ? __('Edit Items') : __('New Items'),
 				$id ? __('Edit Items') : __('New Items')
 			);
-			$this->_addContent(
+			 $this->_addContent(
 				$this->_view->getLayout()->createBlock('\Sm\MegaMenu\Block\Adminhtml\MenuItems\Edit')
 			);
 			$this->_addLeft(
 				$this->_view->getLayout()->createBlock('\Sm\MegaMenu\Block\Adminhtml\MenuItems\Edit\Tabs')
-			);
+			); 
 
 			$resultPage->getConfig()->getTitle()->prepend(__('Menu Items'));
 			$resultPage->getConfig()->getTitle()
 				->prepend($model->getItemsId() ? $model->getTitle() : __('New Items'));
+				//var_dump($data);die('adsfasdf');
 			return $resultPage;
 		}
 	}

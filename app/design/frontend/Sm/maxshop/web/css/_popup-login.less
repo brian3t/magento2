@@ -27,9 +27,11 @@ body .block-popup-login {
     padding: 0px 20px 0px;
     background: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+
     .fieldset > .field:not(.choice) > .control {
         width: 100%;
     }
+
     .close-login {
         display: inline-block;
         background: url(../images/btn-close-login.png) no-repeat top left;
@@ -68,6 +70,7 @@ body .block-popup-login {
             top: -4px;
             background-color: @color_theme;
             font-weight: 600;
+
             &:before {
                 content: "";
                 display: inline-block;
@@ -117,6 +120,7 @@ body .block-popup-login {
             color: #fff;
             font-weight: bold;
             background-color: @color_theme;
+
             &:hover {
                 background-color: @color_theme_active;
             }
@@ -150,12 +154,14 @@ body .block-popup-login {
             }
         }
     }
+
     .secondary {
         width: 100%;
         display: block;
         text-align: left;
         margin-bottom: 10px;
     }
+
     .action.login {
         background-repeat: no-repeat;
         background-position: 25px center;
@@ -165,15 +171,18 @@ body .block-popup-login {
         font-weight: bold;
         background-image: url(../images/icon-btn-login.png);
         background-color: #666666;
+
         &:hover {
             background-color: @color_theme;
         }
     }
+
     .email-input,
     .pass-input {
         position: relative;
         margin: 0 0 14px;
     }
+
     .email-input:before {
         background: url(../images/icon-username.png) no-repeat top left #f7f7f7;
         content: "";

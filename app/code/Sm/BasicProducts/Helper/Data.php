@@ -403,9 +403,9 @@ class Data extends AbstractHelper
 		$dirImg = strpos($dirImg, 'media') !== false ? $dirImg : $from_skin_nophoto;
 		$absPath = $dirImg;
 		if (file_exists($cache_dir . '/' . $_file_name) && @getimagesize($cache_dir . '/' . $_file_name) !== false) {
-			$new_image =$this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'catalog/' . $type . '/' . $folder . '/' . $config['width'] . 'x' . $config['height'] . '/' . md5(serialize($config)) . '/' . $_file_name;
+			$new_image = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'catalog/' . $type . '/' . $folder . '/' . $config['width'] . 'x' . $config['height'] . '/' . md5(serialize($config)) . '/' . $_file_name;
 		} elseif ((file_exists($dirImg) && $dirImg != '')) {
-			
+
 			if (!is_dir($cache_dir)) {
 				@mkdir($cache_dir, 0777, true);
 			}
@@ -424,6 +424,7 @@ class Data extends AbstractHelper
 		}
 		return $new_image;
 	}
+
 
 	public function HexToRGB($hex)
 	{

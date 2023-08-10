@@ -33,6 +33,7 @@
         .translate(0, -25%);
         .transition-transform(~"0.3s ease-out");
     }
+
     &.in .modal-dialog {
         .translate(0, 0)
     }
@@ -76,6 +77,7 @@
     &.fade {
         .opacity(0);
     }
+
     &.in {
         .opacity(@modal-backdrop-opacity);
     }
@@ -119,10 +121,12 @@
         margin-left: 5px;
         margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
     }
+
     // but override that for button groups
     .btn-group .btn + .btn {
         margin-left: -1px;
     }
+
     // and override it for block buttons as well
     .btn-block + .btn-block {
         margin-left: 0;

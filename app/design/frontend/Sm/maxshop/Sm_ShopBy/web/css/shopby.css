@@ -1,10 +1,10 @@
 .price-slider-wrap {
     padding: 0px 10px 0 0;
-	margin:10px;
+    margin: 10px;
 }
 
 #price-slider {
-	background-color: #666;
+    background-color: #666;
     border-radius: 3px;
     height: 6px;
     margin: 10px 8px 0 4px;
@@ -43,20 +43,21 @@
     z-index: 15;
 }
 
-.price-slider-values{
-	text-align:center;
-	margin-top:20px;
+.price-slider-values {
+    text-align: center;
+    margin-top: 20px;
 }
+
 .price-slider-values input[type="text"] {
     border: 1px solid #d8d8d8;
     color: #211e1f;
     padding-left: 2px;
     padding-right: 2px;
     width: 50px;
-	text-align:center;
+    text-align: center;
 }
 
-.loading-mask-shopby{
+.loading-mask-shopby {
     background: rgba(255, 255, 255, 0.5) none repeat scroll 0 0;
     bottom: 0;
     left: 0;
@@ -66,6 +67,7 @@
     top: 0;
     z-index: 9999;
 }
+
 .loading-mask-shopby .loader > img {
     bottom: 0;
     left: 0;
@@ -75,8 +77,9 @@
     top: 0;
     z-index: 100;
 }
+
 @media all and (max-width: 360px) {
-	.toolbar-sorter.sorter .sorter-label{
-		display:none;
-	}
+    .toolbar-sorter.sorter .sorter-label {
+        display: none;
+    }
 }

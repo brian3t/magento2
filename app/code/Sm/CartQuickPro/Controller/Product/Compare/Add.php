@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * SM CartQuickPro - Version 1.1.0
+ * SM CartQuickPro - Version 1.5.0
  * Copyright (c) 2017 YouTech Company. All Rights Reserved.
  * @license - Copyrighted Commercial Software
  * Author: YouTech Company
@@ -11,9 +11,59 @@
 namespace Sm\CartQuickPro\Controller\Product\Compare;
 
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Framework\Data\Form\FormKey\Validator;
+use Magento\Framework\View\Result\PageFactory;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 
-class Add extends \Magento\Catalog\Controller\Product\Compare
+class Add extends \Magento\Catalog\Controller\Product\Compare implements HttpPostActionInterface
 {
+	 /**
+     * Object Manager instance
+     *
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $_objectManager;
+	
+	public function __construct(
+        \Magento\Framework\App\Action\Context $context,
+        \Magento\Catalog\Model\Product\Compare\ItemFactory $compareItemFactory,
+        \Magento\Catalog\Model\ResourceModel\Product\Compare\Item\CollectionFactory $itemCollectionFactory,
+        \Magento\Customer\Model\Session $customerSession,
+        \Magento\Customer\Model\Visitor $customerVisitor,
+        \Magento\Catalog\Model\Product\Compare\ListCompare $catalogProductCompareList,
+        \Magento\Catalog\Model\Session $catalogSession,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        Validator $formKeyValidator,
+        PageFactory $resultPageFactory,
+        ProductRepositoryInterface $productRepository
+    ) {
+        $this->_storeManager = $storeManager;
+        $this->_compareItemFactory = $compareItemFactory;
+        $this->_itemCollectionFactory = $itemCollectionFactory;
+        $this->_customerSession = $customerSession;
+        $this->_customerVisitor = $customerVisitor;
+        $this->_catalogProductCompareList = $catalogProductCompareList;
+        $this->_catalogSession = $catalogSession;
+        $this->_formKeyValidator = $formKeyValidator;
+        $this->resultPageFactory = $resultPageFactory;
+        $this->productRepository = $productRepository;
+        parent::__construct(
+				$context, 
+				$compareItemFactory,
+				$itemCollectionFactory,
+				$customerSession,
+				$customerVisitor,
+				$catalogProductCompareList,
+				$catalogSession,
+				$storeManager,
+				$formKeyValidator,
+				$resultPageFactory,
+				$productRepository
+		);
+		$this->_objectManager = $context->getObjectManager();
+    }
+	
     /**
      * Add item to compare list
      *

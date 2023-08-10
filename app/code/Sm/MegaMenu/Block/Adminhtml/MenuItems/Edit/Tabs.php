@@ -16,45 +16,45 @@ use Magento\Framework\Translate\InlineInterface;
 
 class Tabs extends \Magento\Backend\Block\Widget\Tabs
 {
-	const BASIC_TAB_GROUP_CODE = 'basic';
+    const BASIC_TAB_GROUP_CODE = 'basic';
 
-	/**
-	 * @var InlineInterface
-	 */
-	protected $_translateInline;
+    /**
+     * @var InlineInterface
+     */
+    protected $_translateInline;
 
-	public function __construct(
-		Context $context,
-		Session $authSession,
-		EncoderInterface $jsonEncoder,
-		InlineInterface $translateInline,
-		array $data = []
+    public function __construct(
+        Context $context,
+        Session $authSession,
+        EncoderInterface $jsonEncoder,
+        InlineInterface $translateInline,
+        array $data = []
     )
     {
-		$this->_translateInline = $translateInline;
-		parent::__construct($context, $jsonEncoder, $authSession, $data);
-	}
+        $this->_translateInline = $translateInline;
+        parent::__construct($context, $jsonEncoder, $authSession, $data);
+    }
 
-	protected function _construct()
-	{
-		parent::_construct();
-		$this->setId('menuitems_tabs');
-		$this->setDestElementId('edit_form');
+    protected function _construct()
+    {
+        parent::_construct();
+        $this->setId('menuitems_tabs');
+        $this->setDestElementId('edit_form');
         $this->setTitle("" . __('Mega Menu'));
-		if ($tab = $this->getRequest()->getParam('activeTab'))
-			$this->_activeTab = $tab;
-		else
-			$this->_activeTab = 'menuitems';
-	}
+        if ($tab = $this->getRequest()->getParam('activeTab'))
+            $this->_activeTab = $tab;
+        else
+            $this->_activeTab = 'menuitems';
+    }
 
-	protected function _translateHtml($html)
-	{
-		$this->_translateInline->processResponseBody($html);
-		return $html;
-	}
+    protected function _translateHtml($html)
+    {
+        $this->_translateInline->processResponseBody($html);
+        return $html;
+    }
 
-	protected function _prepareLayout()
-	{
+    protected function _prepareLayout()
+    {
 ////		if ($this->getChildBlock('menuitems_form')) {
 ////			$this->addTab('menuitems_form', 'menuitems_form');
 ////			$this->getChildBlock('menuitems_form')->setGroupCode(self::BASIC_TAB_GROUP_CODE);
@@ -68,24 +68,24 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
                 'group_code' => self::BASIC_TAB_GROUP_CODE
             ]
         );
+		
+        $this->addTab(
+            'menugroup',
+            [
+                'label' => __('Menu Group'),
+                'title' => __('Menu Group'),
+                'url' => $this->getUrl('*/menugroup/newaction',
+                    [
+                        'id' => $this->getRequest()->getParam('gid')
+                    ]),
+                'group_code' => self::BASIC_TAB_GROUP_CODE
+            ]
+        );
+        return parent::_prepareLayout();
+    }
 
-		$this->addTab(
-			'menugroup',
-			[
-				'label' => __('Menu Group'),
-				'title' => __('Menu Group'),
-				'url' => $this->getUrl('*/menugroup/newaction',
-					[
-						'id' => $this->getRequest()->getParam('gid')
-					]),
-				'group_code' => self::BASIC_TAB_GROUP_CODE
-			]
-		);
-		return parent::_prepareLayout();
-	}
-
-	private function _getTabHtml($tab)
-	{
-		return $this->getLayout()->createBlock('\Sm\MegaMenu\Block\Adminhtml\MenuItems\Edit\Tab' . $tab )->toHtml();
-	}
+    private function _getTabHtml($tab)
+    {
+        return $this->getLayout()->createBlock('\Sm\MegaMenu\Block\Adminhtml\MenuItems\Edit\Tab' . $tab)->toHtml();
+    }
 }

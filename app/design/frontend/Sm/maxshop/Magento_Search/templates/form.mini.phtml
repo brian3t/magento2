@@ -12,36 +12,42 @@
 $helper = $this->helper('Magento\Search\Helper\Data');
 ?>
 <div class="block-search-header">
-    
+
     <div class="block-content">
-        <form class="form minisearch" id="search_mini_form" action="<?php /* @escapeNotVerified */ echo $helper->getResultUrl() ?>" method="get">
-          <div class="form-search">
-           
-            <input id="search" aria-expanded="true" 
-                   data-mage-init='{"quickSearch":{
+        <form class="form minisearch" id="search_mini_form" action="<?php /* @escapeNotVerified */
+        echo $helper->getResultUrl() ?>" method="get">
+            <div class="form-search">
+
+                <input id="search" aria-expanded="true"
+                       data-mage-init='{"quickSearch":{
                         "formSelector":"#search_mini_form",
-                        "url":"<?php /* @escapeNotVerified */ echo $block->getUrl('search/ajax/suggest'); ?>",
+                        "url":"<?php /* @escapeNotVerified */
+                       echo $block->getUrl('search/ajax/suggest'); ?>",
                         "destinationSelector":"#search_autocomplete"}
                    }'
-                   type="text"
-                   name="<?php /* @escapeNotVerified */ echo $helper->getQueryParamName() ?>"
-       onfocus="if(this.value=='Enter your keyword...') this.value='';" onblur="if(this.value=='') this.value='Enter your keyword...';" value="Enter your keyword..."
-                   class="input-text"
-                   maxlength="<?php /* @escapeNotVerified */ echo $helper->getMaxQueryLength();?>"
-                   role="combobox"
-                   aria-haspopup="false"
-                   aria-autocomplete="both"
-                   autocomplete="off"/>
-            <div id="search_autocomplete" class="search-autocomplete"></div>
-            <?php echo $block->getChildHtml() ?>
+                       type="text"
+                       name="<?php /* @escapeNotVerified */
+                       echo $helper->getQueryParamName() ?>"
+                       onfocus="if(this.value=='Enter your keyword...') this.value='';"
+                       onblur="if(this.value=='') this.value='Enter your keyword...';" value="Enter your keyword..."
+                       class="input-text"
+                       maxlength="<?php /* @escapeNotVerified */
+                       echo $helper->getMaxQueryLength(); ?>"
+                       role="combobox"
+                       aria-haspopup="false"
+                       aria-autocomplete="both"
+                       autocomplete="off"/>
+                <div id="search_autocomplete" class="search-autocomplete"></div>
+                <?php echo $block->getChildHtml() ?>
 
-            <button type="submit"
-                    title="<?php echo $block->escapeHtml(__('Search')) ?>"
-                    class="action search button-search">
-                <span><?php /* @escapeNotVerified */ echo __('Search'); ?></span>
-            </button>
-            
-          </div>
+                <button type="submit"
+                        title="<?php echo $block->escapeHtml(__('Search')) ?>"
+                        class="action search button-search">
+                    <span><?php /* @escapeNotVerified */
+                        echo __('Search'); ?></span>
+                </button>
+
+            </div>
 
         </form>
     </div>

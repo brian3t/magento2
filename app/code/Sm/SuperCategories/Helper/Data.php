@@ -135,7 +135,7 @@ class Data extends AbstractHelper
 			$buffer = '';
 			$buffer_length = 0;
 			$parts = preg_split('/(<[^>]*>)/', $string, -1, PREG_SPLIT_DELIM_CAPTURE);
-			$self_closing_tag = preg_split(',', 'area,base,basefont,br,col,frame,hr,img,input,isindex,link,meta,param,embed',-1);
+			$self_closing_tag = split(',', 'area,base,basefont,br,col,frame,hr,img,input,isindex,link,meta,param,embed');
 			$open = [];
 
 			foreach ($parts as $i => $s) {
@@ -326,7 +326,7 @@ class Data extends AbstractHelper
 		];
 
 		$images_path = [];
-		$priority = preg_split('/[\s|,|;]/', $_config[$prefix .'_order'], -1, PREG_SPLIT_NO_EMPTY);
+		$priority = preg_split('/[\s|,|;]/', $_config[$prefix . '_order'], -1, PREG_SPLIT_NO_EMPTY);
 		if (count($priority) > 0) {
 			$priority = array_map('strtolower', $priority);
 			$mark = [];
@@ -354,12 +354,12 @@ class Data extends AbstractHelper
 			foreach ($mark as $type => $true) {
 				switch ($type) {
 					case 'product_image':
-						$image = ($product->getImage() != null) ? $product->getImage() : ($product->getThumbnail() != null ? $product->getThumbnail() : '');
+						$image = ($product->getImage() != null) ? $product->getImage() : ''; // : ($product->thumbnail != null ? $product->thumbnail : '');
 						$_media_dir = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'catalog/product';
 						$imagesUrl = $_media_dir . $image;
 						$_mediaCheck = $this->_getBaseDirMedia().'catalog/product'.$image;
 						if (file_exists($_mediaCheck) || @getimagesize($_mediaCheck) !== false ) {
-								array_push($images_path, $imagesUrl);
+							array_push($images_path, $imagesUrl);
 						}
 						break;
 					case 'product_description':
@@ -413,12 +413,12 @@ class Data extends AbstractHelper
 		}
 		$cache_dir = $_media_dir . $folder . '/' . $config['width'] . 'x' . $config['height'] . '/' . md5(serialize($config));
 
-			if (!is_dir($cache_dir)) {
-				@mkdir($_media_dir, 0777, true);
-				@mkdir($_media_dir . $folder . '/', 0777, true);
-				@mkdir($_media_dir . $folder . '/' . $config['width'] . 'x' . $config['height'] . '/', 0777, true);
-				@mkdir($cache_dir, 0777, true);
-			}
+		if (!is_dir($cache_dir)) {
+			@mkdir($_media_dir, 0777, true);
+			@mkdir($_media_dir . $folder . '/', 0777, true);
+			@mkdir($_media_dir . $folder . '/' . $config['width'] . 'x' . $config['height'] . '/', 0777, true);
+			@mkdir($cache_dir, 0777, true);
+		}
 		$dirImg = $baseDirPub.str_replace("/", "/", strstr($file, 'media'));
 		$from_skin_nophoto = $baseDirPub.str_replace("/", "/", strstr($file, 'static'));
 		$dirImg = strpos($dirImg, 'media') !== false ? $dirImg : $from_skin_nophoto;

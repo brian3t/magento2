@@ -3,3 +3,7 @@
         margin-top: -70px;
     }
 }
+span.spc-tab-label{
+    display: none;
+}
+.detail-bottom-wrapper .product.data.items > .item.title > a {font-size: 80%}

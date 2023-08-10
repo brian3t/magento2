@@ -39,8 +39,9 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 	protected $localeDate;
 	protected $_scopeConfigInterface;
 	protected $_directory;
-
+	protected $_reviewFactory;
 	public function __construct(
+		\Magento\Review\Model\ReviewFactory $reviewFactory,
 		ResourceConnection $resourceConnection,
 		ObjectManagerInterface $objectManager,
 		ResolverInterface $localeResolver,
@@ -59,6 +60,7 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 		$this->_storeId = (int)$this->_storeManager->getStore()->getId();
 		$this->localeDate = $this->_objectManager->get('\Magento\Framework\Stdlib\DateTime\TimezoneInterface');
 		$this->_directory = $this->_objectManager->get('\Magento\Framework\Filesystem');
+		$this->_reviewFactory = $reviewFactory;
 		if ($context->getRequest() && $context->getRequest()->isAjax()) {
 			$_cfg =  $context->getRequest()->getParam('config');
 			$this->_config = (array)json_decode(base64_decode(strtr($_cfg, '-_', '+/')));
@@ -67,7 +69,7 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 		}
 		parent::__construct($context, $data);
 	}
-
+	
 	public function _prepareLayout()
 	{
 		return parent::_prepareLayout();
@@ -155,7 +157,7 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 		$folder_cache = $folder_cache.'Sm/SuperCategories/';
 		if(!file_exists($folder_cache))
 			mkdir ($folder_cache, 0777, true);
-
+		
 		$options = array(
 			'cacheDir' => $folder_cache,
 			'lifeTime' => $cache_time
@@ -168,7 +170,7 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 				$cacheid_items = md5(serialize([$this->_getConfig(), $this->_storeId ,$this->_storeManager->getStore()->getCurrentCurrencyCode(), $ajax_reslisting_start, $catid]));
 				if ( $dataitems = $Cache_Lite->get($cacheid_items)) {
 					return  $dataitems;
-				} else {
+				} else { 
 					$template_file = "default_items.phtml";
 					$this->setTemplate($template_file);
 					$dataitems = parent::_toHtml();
@@ -180,14 +182,14 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 					$template_file = "default_items.phtml";
 					$this->setTemplate($template_file);
 			}
-
-		}
+			
+		}		
 		else{
 			if ($use_cache){
 				$hash = md5( serialize([$this->_getConfig(), $this->_storeId ,$this->_storeManager->getStore()->getCurrentCurrencyCode()]) );
 				if ($data = $Cache_Lite->get($hash)) {
 					return  $data;
-				} else {
+				} else { 
 					$template_file = $this->getTemplate();
 					$template_file = (!empty($template_file)) ? $template_file : "Sm_SuperCategories::default.phtml";
 					$this->setTemplate($template_file);
@@ -202,9 +204,9 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 				$this->setTemplate($template_file);
 			}
 		}
-
+		
         return parent::_toHtml();
-
+		
 	}
 
 	public function getListCriterionFilter($filter_catid=false)
@@ -258,7 +260,7 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 		}
 		return $list;
 	}
-
+	
 	public function _getProductInfor($_catids, $field_order = null)
 	{
 		$small_image_config = [
@@ -300,8 +302,8 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 			}
 		}
 		return null;
-	}
-
+	}	
+	
 	public function _isAjax()
 	{
 		$isAjax = $this->getRequest()->isAjax();
@@ -311,7 +313,7 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 		} else {
 			return false;
 		}
-	}
+	}		
 
 	public function getListCategoriesFilter($categoryId = null,$start=0)
 	{
@@ -323,7 +325,7 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 			'background' => (string)$this->_getConfig('imgcfgcat_background'),
 			'function' => (int)$this->_getConfig('imgcfgcat_function', 0)
 		];
-
+		
 		$catids = $this->_getConfig('product_category');
 		if($catids == null) return;
 		$_catids = $this->_getCatActive($catids);
@@ -337,8 +339,8 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 			//$cat['image'] = $helper->_resizeImage($_image, $category_image_config,'category');
 			$cat_child = $cat_info->getChildren();
 			if( $cat_child != null ){
-				$cat_child = explode(',',$cat_child);
-				foreach( $cat_child as $subCatid){
+				$cat_child = explode(',',$cat_child); 
+				foreach( $cat_child as $subCatid){ 
 					$_sub_cat = $this->_objectManager->create('Magento\Catalog\Model\Category')->load($subCatid);
 					if( $_sub_cat->getIsActive() ) {
 						$child['link']     = $_sub_cat->getUrl();
@@ -348,13 +350,13 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 						$child_list[] = $child;
 					}
 					$cat['child'] = $child_list;
-				}
-			}
+				}			
+			}						
 			$list[] = $cat;
 		}
 		return $list;
 	}
-
+	
 	public function _getCatinfor($catids, $orderby = null)
 	{
 		!is_array($catids) && settype($catids, 'array');
@@ -372,7 +374,7 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 		}
 		return $list;
 	}
-
+	
 	/*
 	* return countProduct;
 	*/
@@ -413,7 +415,7 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 		}
 		return $collection;
 	}
-
+	
 	public function _getProductCatalog()
 	{
 		$catids = $this->_getConfig('product_category');
@@ -433,7 +435,7 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 			$catids = $this->_getConfig('product_category');
 		}
 		!is_array($catids) && $catids = preg_split('/[\s|,|;]/', $catids, -1, PREG_SPLIT_NO_EMPTY);
-
+		
 		if (empty($catids)) return;
 		$categoryIds = ['in' => $catids];
 		$collection = $this->_objectManager->create('Magento\Catalog\Model\Category') ->getCollection();
@@ -458,7 +460,7 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 			}
 		}
 		$_catids = [];
-
+		
 		if (empty($collection)) return;
 		foreach ($collection as $category) {
 			$_catids[] = $category->getId();
@@ -515,7 +517,7 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 			$this->_addReviewsCount($collection);
 			$collection->getSelect()->group('entity_id')->distinct(true);
 			$this->_getOrder($collection, $field_order);
-
+			
 			$collection->clear();
 			if ($countProduct) return count($collection->getAllIds());
 			$start = (int)$this->getRequest()->getPost('ajax_reslisting_start');
@@ -648,7 +650,8 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
 			);
 		return $collection;
 	}
-
+	
+	
 	public function getAddToCartPostParams(\Magento\Catalog\Model\Product $product)
     {
         $url = $this->getAddToCartUrl($product);
@@ -661,4 +664,10 @@ class SuperCategories extends \Magento\Catalog\Block\Product\AbstractProduct
             ]
         ];
     }
+	public function getRatingSummary(\Magento\Catalog\Model\Product $product)
+	{
+		$this->_reviewFactory->create()->getEntitySummary($product, $this->_storeManager->getStore()->getId());
+		$ratingSummary = $product->getRatingSummary()->getRatingSummary();
+		return $ratingSummary;
+	}
 }

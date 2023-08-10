@@ -1,61 +1,62 @@
 <?php
-	$_config = $this->helper('Sm\Maxshop\Helper\Data');
+$_config = $this->helper('Sm\Maxshop\Helper\Data');
 ?>
 <div class="footer-container footer-2">
-	
-	<div class="footer">
-		<div class="footer-top">
-			<div class="container">
-				<div class="col-lg-3 col-md-3 col-sm-12 social-footer">
-					<?php echo $block->getLayout()->createBlock('Magento\Framework\View\Element\Template')->setTemplate('Magento_Theme::html/social.phtml')->toHtml(); ?>
-				</div>
+
+    <div class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="col-lg-3 col-md-3 col-sm-12 social-footer">
+                    <?php echo $block->getLayout()->createBlock('Magento\Framework\View\Element\Template')->setTemplate('Magento_Theme::html/social.phtml')->toHtml(); ?>
+                </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 ft-newlester">
                     <?php echo $block->getLayout()->createBlock('Magento\Newsletter\Block\Subscribe')->setTemplate('subscribe-footer.phtml')->toHtml(); ?>
                 </div>
-			</div>
-			
-		</div>
-		
-		<div class="footer-middle">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-6 about-us-footer">
+            </div>
+
+        </div>
+
+        <div class="footer-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 about-us-footer">
                         <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('about-us-footer')->toHtml(); ?>
-					</div>
+                    </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 ft-my-account">
                         <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ft-my-account')->toHtml(); ?>
                     </div>
-					<div class="col-lg-3 col-md-3 col-sm-6 ft-information">
-						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ft-information')->toHtml(); ?>
-					</div>						
+                    <div class="col-lg-3 col-md-3 col-sm-6 ft-information">
+                        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ft-information')->toHtml(); ?>
+                    </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 ft-contact-us">
                         <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('ft-contact-us')->toHtml(); ?>
                         <div class="payment-footer">
                             <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('payment-footer')->toHtml(); ?>
                         </div>
                     </div>
-				</div>
+                </div>
 
-			</div>
-		</div>
-		
-		<div class="copyright">
-			<div class="container">
-				<div class="footer-copyright-content">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="copyright-footer">
-								<?php if($_config->getAdvanced('custom_copyright')){ ?>
-									<address><?php echo $_config->getAdvanced('copyright_content') ?></address>
-								<?php } else {?>
-									<address><?php /* @escapeNotVerified */ echo $block->getCopyright() ?></address>
-								<?php } ?>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-		
+            </div>
+        </div>
+
+        <div class="copyright">
+            <div class="container">
+                <div class="footer-copyright-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="copyright-footer">
+                                <?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                                    <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+                                <?php } else { ?>
+                                    <address><?php /* @escapeNotVerified */
+                                        echo $block->getCopyright() ?></address>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

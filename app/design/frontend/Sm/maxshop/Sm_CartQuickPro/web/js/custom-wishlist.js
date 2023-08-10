@@ -6,7 +6,7 @@
  * Author: YouTech Company
  * Websites: http://www.magentech.com
  */
- 
+
 define([
     'jquery',
     'mage/template',
@@ -14,7 +14,7 @@ define([
     'jquery/ui',
     'mage/validation/validation',
     'mage/dataPost',
-	'ajaxCart'
+    'ajaxCart'
 ], function ($, mageTemplate, alert) {
     'use strict';
 
@@ -36,39 +36,39 @@ define([
         _create: function () {
             var _this = this;
             if (!this.options.infoList) {
-				if (typeof ajaxCart !== 'undefined' &&  ajaxCart.options.isAjaxCart) {
-					this.element
-						.on('addToCart', function (event, context) {
-							event.stopPropagation(event);
-							$(context).data('stop-processing', true);
-							var urlParams = _this._getItemsToCartParams(
-								$(context).parents('[data-row=product-item]').find(_this.options.addToCartSelector)
-							);
-							$.mage.dataPost().postData(urlParams);
-							return false;
-						})
-						.on('click', this.options.addToCartSelector, $.proxy(this._beforeAddToCart, this))
-						.on('focusin focusout', this.options.commentInputType, $.proxy(this._focusComment, this));
-						 $('body').off('click',  this.options.addAllToCartSelector).on('click', this.options.addAllToCartSelector, $.proxy(this._addAllWItemsToCart, this));
-				}else{
-					 this.element
-						.on('addToCart', function (event, context) {
-							event.stopPropagation(event);
-							$(context).data('stop-processing', true);
-							var urlParams = _this._getItemsToCartParams(
-								$(context).parents('[data-row=product-item]').find(_this.options.addToCartSelector)
-							);
-							$.mage.dataPost().postData(urlParams);
-							return false;
-						})
-						.on('click', this.options.btnRemoveSelector, $.proxy(function (event) {
-							event.preventDefault();
-							$.mage.dataPost().postData($(event.currentTarget).data('post-remove'));
-						}, this))
-						.on('click', this.options.addToCartSelector, $.proxy(this._beforeAddToCart, this))
-						.on('click', this.options.addAllToCartSelector, $.proxy(this._addAllWItemsToCart, this))
-						.on('focusin focusout', this.options.commentInputType, $.proxy(this._focusComment, this));
-				}	 
+                if (typeof ajaxCart !== 'undefined' && ajaxCart.options.isAjaxCart) {
+                    this.element
+                        .on('addToCart', function (event, context) {
+                            event.stopPropagation(event);
+                            $(context).data('stop-processing', true);
+                            var urlParams = _this._getItemsToCartParams(
+                                $(context).parents('[data-row=product-item]').find(_this.options.addToCartSelector)
+                            );
+                            $.mage.dataPost().postData(urlParams);
+                            return false;
+                        })
+                        .on('click', this.options.addToCartSelector, $.proxy(this._beforeAddToCart, this))
+                        .on('focusin focusout', this.options.commentInputType, $.proxy(this._focusComment, this));
+                    $('body').off('click', this.options.addAllToCartSelector).on('click', this.options.addAllToCartSelector, $.proxy(this._addAllWItemsToCart, this));
+                } else {
+                    this.element
+                        .on('addToCart', function (event, context) {
+                            event.stopPropagation(event);
+                            $(context).data('stop-processing', true);
+                            var urlParams = _this._getItemsToCartParams(
+                                $(context).parents('[data-row=product-item]').find(_this.options.addToCartSelector)
+                            );
+                            $.mage.dataPost().postData(urlParams);
+                            return false;
+                        })
+                        .on('click', this.options.btnRemoveSelector, $.proxy(function (event) {
+                            event.preventDefault();
+                            $.mage.dataPost().postData($(event.currentTarget).data('post-remove'));
+                        }, this))
+                        .on('click', this.options.addToCartSelector, $.proxy(this._beforeAddToCart, this))
+                        .on('click', this.options.addAllToCartSelector, $.proxy(this._addAllWItemsToCart, this))
+                        .on('focusin focusout', this.options.commentInputType, $.proxy(this._focusComment, this));
+                }
             }
 
             // Setup validation for the form
@@ -87,7 +87,7 @@ define([
          * @param {Event} event
          * @private
          */
-       _beforeAddToCart: function (event) {
+        _beforeAddToCart: function (event) {
             var elem = $(event.currentTarget),
                 itemId = elem.data(this.options.dataAttribute),
                 qtyName = $.validator.format(this.options.nameFormat, itemId),

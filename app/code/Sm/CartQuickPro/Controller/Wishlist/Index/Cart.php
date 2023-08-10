@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * SM CartQuickPro - Version 1.1.0
+ * SM CartQuickPro - Version 1.5.0
  * Copyright (c) 2017 YouTech Company. All Rights Reserved.
  * @license - Copyrighted Commercial Software
  * Author: YouTech Company
@@ -70,6 +70,13 @@ class Cart extends \Magento\Wishlist\Controller\AbstractIndex
     protected $formKeyValidator;
 
     /**
+     * Object Manager instance
+     *
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $_objectManager;
+
+    /**
      * @param Action\Context $context
      * @param \Magento\Wishlist\Controller\WishlistProviderInterface $wishlistProvider
      * @param \Magento\Wishlist\Model\LocaleQuantityProcessor $quantityProcessor
@@ -106,6 +113,7 @@ class Cart extends \Magento\Wishlist\Controller\AbstractIndex
         $this->helper = $helper;
         $this->cartHelper = $cartHelper;
         $this->formKeyValidator = $formKeyValidator;
+        $this->_objectManager = $context->getObjectManager();
         parent::__construct($context);
     }
 

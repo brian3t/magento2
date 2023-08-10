@@ -367,7 +367,6 @@ class MenuItems extends AbstractModel implements MenuItemsInterface
 		if ($mode == 2) {
 			$filter_status = '';
 		}
-        $menu_title = $item['title'];
 		$groupId = $item['group_id'];
 		if($attributes)
 		{
@@ -460,9 +459,6 @@ class MenuItems extends AbstractModel implements MenuItemsInterface
 		try
 		{
 			$items = $this->getCollection()->getItemsByLv($groupId, $level_start, $status_child);
-            foreach ($items as $idx => &$item){
-                $a = 1;
-            }
 			return $items;
 		} catch (\Exception $e) {
 			$this->messageManager->addError($e->getMessage());

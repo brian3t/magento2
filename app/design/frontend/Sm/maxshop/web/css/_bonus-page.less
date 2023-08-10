@@ -25,6 +25,7 @@
 
         .img-404 {
             margin: 30px 0px;
+
             img {
                 width: auto;
                 max-width: 100%;
@@ -89,11 +90,13 @@
             font-size: 100%;
             padding: 0;
         }
+
         a.action.create.primary {
             color: #fff;
             background: @color_theme;
             padding: 10px 20px;
             font-weight: bold;
+
             &:hover {
                 background: @color_theme_active;
             }
@@ -150,9 +153,20 @@
 }
 
 // SHOPPING CART
+.cart.table-wrapper .product-item-details,
+.cart.table-wrapper .product-item-photo {
+    display: inline-block !important;
+    width: auto !important;
+}
 
 .cart-container {
     margin-bottom: 40px;
+
+    .cart.main.actions {
+        .action.clear {
+            display: none !important;
+        }
+    }
 
     .paypal-review-discount .block > .title:after {
         right: 0;
@@ -203,6 +217,7 @@
     .form.form-cart {
         width: 67%;
     }
+
     .cart.main.actions {
         .action {
             border: none;
@@ -229,6 +244,7 @@
             &.update {
                 margin-left: 10px;
             }
+
             &:hover {
                 background: @color_theme_active;
             }
@@ -241,6 +257,7 @@
             font-weight: 500;
             text-transform: uppercase;
         }
+
         .item .col.item {
             border-top: none;
         }
@@ -305,19 +322,23 @@
 
 .block-collapsible-nav .content {
     background: none !important;
+
     .item {
         a, > strong {
             padding: 7px 0;
             border: none !important;
             border-bottom: 1px solid #ddd !important;
         }
+
         a:focus,
         a:hover {
             background: none !important;
         }
+
         &.current {
             color: @color_theme;
         }
+
         &:last-child {
             a, > strong {
                 border-bottom: none !important;
@@ -337,9 +358,11 @@
     .products-grid {
         .item {
             float: left;
+
             .item-inner .bottom-action .btn-action.btn-cart {
                 top: 65px;
             }
+
             .item-inner .bottom-action .btn-action.link-wishlist {
                 top: 100px;
             }
@@ -379,6 +402,7 @@
             border: none;
             padding: 0;
         }
+
         .modal-content {
             .opc-block-summary {
                 padding: 30px;
@@ -533,6 +557,7 @@
 
                 &:hover {
                     border: 1px solid #ddd;
+
                     .product-item-inner {
                         display: block;
                     }
@@ -587,6 +612,7 @@
     .owl-theme .owl-dots .owl-dot span {
         border: none;
     }
+
     clear: both;
     padding-top: 30px;
 
@@ -683,9 +709,11 @@
 
             .cl-name {
                 font-size: inherit;
+
                 > a {
                     font-size: 133.33%;
                     color: @color_theme;
+
                     &:hover {
                         color: @color_theme_active;
                     }
@@ -726,6 +754,7 @@
             display: block;
             padding: 5px 0 7px;
             background: url("../images/border-bottom-bs.png") repeat-x left bottom;
+
             &:hover {
                 color: @color_theme;
             }
@@ -805,9 +834,11 @@
         top: 10px;
         margin: 0 3px;
         position: relative;
+
         &:before {
             display: none;
         }
+
         &:hover {
             .transform_scale(1.1);
         }
@@ -859,17 +890,22 @@
     input {
         .placeholder(#666);
     }
+
     .box-1-contact:not(:last-child) {
         margin-bottom: 40px;
     }
+
     .title-bonus-page {
         display: none;
     }
+
     fieldset.fieldset {
         margin-bottom: 20px;
     }
+
     .left-input {
         max-width: 395px;
+
         .field {
             margin-bottom: 10px;
 
@@ -914,6 +950,7 @@
     a:hover {
         color: @color_theme;
     }
+
     .list-info {
         .item-info {
             padding-left: 52px;
@@ -1114,6 +1151,7 @@
 
     .happy-about-us .happy-ab .title-happy-about {
         padding: 5px;
+
         h2 {
             font-size: 130%;
         }

@@ -1,23 +1,23 @@
 <?php
-	$_config = $this->helper('Sm\Maxshop\Helper\Data');
-	$footerStyle = $_config->getGeneral('footer_style');
+$_config = $this->helper('Sm\Maxshop\Helper\Data');
+$footerStyle = $_config->getGeneral('footer_style');
 
-	include ($block->getTemplateFile("Magento_Theme::html/footer/" . $footerStyle . ".phtml"));
+include($block->getTemplateFile("Magento_Theme::html/footer/" . $footerStyle . ".phtml"));
 
 ?>
 
-<?php if($_config->getAdvanced('show_gototop')){ ?>
+<?php if ($_config->getAdvanced('show_gototop')) { ?>
     <a id="yt-totop" href="javascript:void(0)" title="Go to Top"></a>
-	<script type="text/javascript">
-		require([
-			'jquery'
-		], function ($) {
+    <script type="text/javascript">
+        require([
+            'jquery'
+        ], function ($) {
             $("#yt-totop").hide();
             $(function () {
                 var wh = $(window).height();
-                var whtml =  $(document).height();
+                var whtml = $(document).height();
                 $(window).scroll(function () {
-                    if ($(this).scrollTop() > whtml/10) {
+                    if ($(this).scrollTop() > whtml / 10) {
                         $('#yt-totop').fadeIn();
                     } else {
                         $('#yt-totop').fadeOut();
@@ -32,7 +32,7 @@
             });
         });
     </script>
-	
+
 <?php } ?>
 
 

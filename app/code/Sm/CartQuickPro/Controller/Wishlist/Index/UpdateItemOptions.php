@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * SM CartQuickPro - Version 1.1.0
+ * SM CartQuickPro - Version 1.5.0
  * Copyright (c) 2017 YouTech Company. All Rights Reserved.
  * @license - Copyrighted Commercial Software
  * Author: YouTech Company
@@ -41,6 +41,13 @@ class UpdateItemOptions extends \Magento\Wishlist\Controller\AbstractIndex
     protected $formKeyValidator;
 
     /**
+     * Object Manager instance
+     *
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $_objectManager;
+
+    /**
      * @param Action\Context $context
      * @param Session $customerSession
      * @param WishlistProviderInterface $wishlistProvider
@@ -58,6 +65,7 @@ class UpdateItemOptions extends \Magento\Wishlist\Controller\AbstractIndex
         $this->wishlistProvider = $wishlistProvider;
         $this->productRepository = $productRepository;
         $this->formKeyValidator = $formKeyValidator;
+        $this->_objectManager = $context->getObjectManager();
         parent::__construct($context);
     }
 

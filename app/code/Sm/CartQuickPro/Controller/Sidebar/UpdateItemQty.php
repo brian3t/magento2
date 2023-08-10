@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * SM CartQuickPro - Version 1.1.0
+ * SM CartQuickPro - Version 1.5.0
  * Copyright (c) 2017 YouTech Company. All Rights Reserved.
  * @license - Copyrighted Commercial Software
  * Author: YouTech Company
@@ -36,6 +36,13 @@ class UpdateItemQty extends Action
     protected $jsonHelper;
 
     /**
+     * Object Manager instance
+     *
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $_objectManager;
+
+    /**
      * @param Context $context
      * @param Sidebar $sidebar
      * @param LoggerInterface $logger
@@ -51,6 +58,7 @@ class UpdateItemQty extends Action
         $this->sidebar = $sidebar;
         $this->logger = $logger;
         $this->jsonHelper = $jsonHelper;
+        $this->_objectManager = $context->getObjectManager();
         parent::__construct($context);
     }
 

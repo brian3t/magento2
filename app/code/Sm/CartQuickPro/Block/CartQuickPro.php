@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * SM CartQuickPro - Version 1.1.0
+ * SM CartQuickPro - Version 1.5.0
  * Copyright (c) 2017 YouTech Company. All Rights Reserved.
  * @license - Copyrighted Commercial Software
  * Author: YouTech Company
@@ -12,23 +12,51 @@ namespace Sm\CartQuickPro\Block;
 
 class CartQuickPro extends \Magento\Framework\View\Element\Template
 {
-	protected $_config = null;
+    /**
+     * @var array
+     */
+    protected $_config = null;
+
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
 	protected $_storeManager;
+
+    /**
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
     protected $_scopeConfig;
+
+    /**
+     * @var int
+     */
 	protected $_storeId;
+
+    /**
+     * @var string
+     */
 	protected $_storeCode;
+
+    /**
+     * @var \Magento\Framework\App\RequestInterface
+     */
 	protected $_request ;
 
-	/**
-	 * Class constructor
-	 *
-	 * @param \Magento\Framework\View\Element\Template\Context $context
-	 * @param \Magento\Framework\App\ResourceConnection $resourceConnection
-	 * @param \Magento\Framework\ObjectManagerInterface $objectManager
-	 * @param \Magento\Eav\Model\Config $eavConfig
-	 * @param string|null $scope
-	 */
+    /**
+     * Object Manager instance
+     *
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $_objectManager;
+
+    /**
+     * CartQuickPro constructor.
+     * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param array $data
+     * @param null $attr
+     */
 	public function __construct(
+        \Magento\Framework\ObjectManagerInterface $objectManager,
 		\Magento\Framework\View\Element\Template\Context $context,
 		array $data = [],
 		$attr = null
@@ -39,10 +67,17 @@ class CartQuickPro extends \Magento\Framework\View\Element\Template
 		$this->_storeId=(int)$this->_storeManager->getStore()->getId();
 		$this->_storeCode=$this->_storeManager->getStore()->getCode();
 		$this->_request = $context->getRequest();
+        $this->_objectManager = $objectManager;
 		$this->_config = $this->_getCfg($attr, $data);
 		parent::__construct($context, $data);
 	}
-	public function _getCfg($attr = null , $data = null)
+
+    /**
+     * @param null $attr
+     * @param null $data
+     * @return array|null|void
+     */
+    public function _getCfg($attr = null , $data = null)
 	{
 		$defaults = [];
 		$_cfg_xml = $this->_scopeConfig->getValue('cartquickpro',\Magento\Store\Model\ScopeInterface::SCOPE_STORE,$this->_storeCode);
@@ -78,6 +113,11 @@ class CartQuickPro extends \Magento\Framework\View\Element\Template
 		return $this->_config;
 	}
 
+    /**
+     * @param null $name
+     * @param null $value_def
+     * @return array|mixed|null|void
+     */
 	public function _getConfig($name = null, $value_def = null)
 	{
 		if (is_null($this->_config)) $this->_getCfg();
@@ -87,8 +127,12 @@ class CartQuickPro extends \Magento\Framework\View\Element\Template
 		}
 		return $this->_config;
 	}
-	
 
+    /**
+     * @param $name
+     * @param null $value
+     * @return bool|void
+     */
 	public function _setConfig($name, $value = null)
 	{
 
@@ -103,7 +147,10 @@ class CartQuickPro extends \Magento\Framework\View\Element\Template
 		}
 		return true;
 	}
-	
+
+    /**
+     * @return bool
+     */
 	public function _isProductView(){
 		$_action_name = ['cartquickpro_wishlist_index_configure', 'cartquickpro_catalog_product_view' ,'cartquickpro_catalog_product_options', 'cartquickpro_cart_configure'];
         if (in_array($this->_request->getFullActionName(), $_action_name )) {
@@ -111,7 +158,10 @@ class CartQuickPro extends \Magento\Framework\View\Element\Template
 		}
 		return false;
 	}
-	
+
+    /**
+     * @return bool
+     */
 	public function _isConfigure(){
 		if ($this->_request->getFullActionName() == 'cartquickpro_cart_configure' ) {
 			return true;
@@ -125,52 +175,75 @@ class CartQuickPro extends \Magento\Framework\View\Element\Template
 		}
 		return false;
 	}
-	
+
+    /**
+     * @return bool
+     */
 	public function _isWishlistIndex(){
 		if ($this->_request->getFullActionName() == 'wishlist_index_index' ) {
 			return true;
 		}
 		return false;
 	}
-	
+
+    /**
+     * @return bool
+     */
 	public function _isWishlistIndexConfigure(){
 		if ($this->_request->getFullActionName() == 'cartquickpro_wishlist_index_configure' ) {
 			return true;
 		}
 		return false;
 	}
-	
+
+    /**
+     * @return bool
+     */
 	public function _isPageCheckout(){
 		if ($this->_request->getFullActionName() == 'checkout_cart_index' ) {
 			return true;
 		}
 		return false;
 	}
-	
+
+    /**
+     * @return bool
+     */
 	public function _isLoggedIn(){
-		$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-		$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+		$customerSession = $this->_objectManager->create('Magento\Customer\Model\Session');
 		if($customerSession->isLoggedIn()){
 		   return true;
 		}
 		return false;
 	}
-	
+
+    /**
+     * @return string
+     */
 	public function _urlLogin(){
 		return $this->getUrl('customer/account/login');
 	}
-	
+
+    /**
+     * @return string
+     */
 	public function getCurrentUrl() {
 		return $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
 	}
-	
+
+    /**
+     * @return bool
+     */
 	public function _isAjaxCart () {
 		if($this->_getConfig('isenabled', 1) && ($this->_getConfig('select_type', 1) == 'both' || $this->_getConfig('select_type', 1) == 'ajaxcart')){
 			return true;
 		}
 		return false;
 	}
-	
+
+    /**
+     * @return bool
+     */
 	public function _isQuickView () {
 		if($this->_getConfig('isenabled', 1) && ($this->_getConfig('select_type', 1) == 'both' || $this->_getConfig('select_type', 1) == 'quickview')){
 			return true;

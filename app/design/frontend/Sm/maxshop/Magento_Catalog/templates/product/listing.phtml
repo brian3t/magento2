@@ -20,7 +20,8 @@ $_productCollection = $block->getLoadedProductCollection();
 $_helper = $this->helper('Magento\Catalog\Helper\Output');
 ?>
 <?php if (!$_productCollection->count()): ?>
-    <p class="message note"><?php /* @escapeNotVerified */ echo __('We can\'t find products matching the selection.') ?></p>
+    <p class="message note"><?php /* @escapeNotVerified */
+        echo __('We can\'t find products matching the selection.') ?></p>
 <?php else: ?>
     <?php echo $block->getToolbarHtml() ?>
     <?php echo $block->getAdditionalHtml() ?>
@@ -37,14 +38,17 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
         $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
     }
     ?>
-    <div class="products wrapper <?php /* @escapeNotVerified */ echo $viewMode; ?>">
+    <div class="products wrapper <?php /* @escapeNotVerified */
+    echo $viewMode; ?>">
         <?php $iterator = 1; ?>
         <ol class="products list items">
             <?php foreach ($_productCollection as $_product): ?>
-                <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="item product">' : '</li><li class="item product">' ?>
+                <?php /* @escapeNotVerified */
+                echo ($iterator++ == 1) ? '<li class="item product">' : '</li><li class="item product">' ?>
                 <div class="product">
                     <?php // Product Image ?>
-                    <a href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>" class="product photo">
+                    <a href="<?php /* @escapeNotVerified */
+                    echo $_product->getProductUrl() ?>" class="product photo">
                         <?php echo $block->getImage($_product, $image)->toHtml(); ?>
                     </a>
                     <div class="product details">
@@ -64,7 +68,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                                 . ' data-mage-init=\'{ "redirectUrl": { "event": "click", url: "' . $block->getAddToCartUrl($_product) . '"} }\'>'
                                 . '<span>' . __('Add to Cart') . '</span></button>';
                         } else {
-                            $info['button'] = $_product->getIsSalable() ?   '<div class="stock available"><span>' . __('In stock') . '</span></div>' :
+                            $info['button'] = $_product->getIsSalable() ? '<div class="stock available"><span>' . __('In stock') . '</span></div>' :
                                 '<div class="stock unavailable"><span>' . __('Out of stock') . '</span></div>';
                         }
 
@@ -76,7 +80,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                         $info['actions'] = '<div class="product action">' . $info['button'] . $info['links'] . '</div>';
 
                         if ($showDescription) {
-                            $info['description'] =  '<div class="product description">'
+                            $info['description'] = '<div class="product description">'
                                 . $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description')
                                 . ' <a href="' . $_product->getProductUrl() . '" class="action more">'
                                 . __('Learn More') . '</a></div>';
@@ -84,18 +88,20 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                             $info['description'] = '';
                         }
 
-                        $details = $block->getInfoOrder() ?: ['name','price','review','description','actions'];
+                        $details = $block->getInfoOrder() ?: ['name', 'price', 'review', 'description', 'actions'];
                         foreach ($details as $detail) {
-                            /* @escapeNotVerified */ echo $info[$detail];
+                            /* @escapeNotVerified */
+                            echo $info[$detail];
                         }
                         ?>
 
                     </div>
                 </div>
-                <?php echo($iterator == count($_productCollection)+1) ? '</li>' : '' ?>
+                <?php echo ($iterator == count($_productCollection) + 1) ? '</li>' : '' ?>
             <?php endforeach; ?>
         </ol>
     </div>
     <?php echo $block->getToolbarHtml() ?>
 <?php endif; ?>
-<?php /* @escapeNotVerified */ echo $time_taken = microtime(true) - $start; ?>
+<?php /* @escapeNotVerified */
+echo $time_taken = microtime(true) - $start; ?>

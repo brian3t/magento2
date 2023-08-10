@@ -4,6 +4,7 @@
         display: inline-block;
         position: relative;
         width: 353px;
+
         .searchbox-cat {
             width: 33%;
             float: left;
@@ -13,6 +14,7 @@
             height: 35px;
 
         }
+
         .input-searchbox {
             float: right;
             width: 68%;
@@ -23,6 +25,7 @@
             height: 35px;
         }
     }
+
     .actions {
 
         button.action {
@@ -36,6 +39,7 @@
             line-height: 35px;
             color: @color_theme;
             background: none;
+
             &:before {
                 content: "\f002";
                 font-family: FontAwesome;
@@ -44,11 +48,13 @@
                 text-decoration: inherit;
                 -webkit-font-smoothing: antialiased;
             }
+
             span {
                 display: none;
             }
 
         }
+
         &:hover {
             button.action {
                 .opacity(0.7) !important;
@@ -60,10 +66,12 @@
 @media (max-width: 991px) {
     .sm-searchbox .searchbox {
         width: 100%;
+
         .input-searchbox {
             width: 100%;
             float: left;
         }
+
         .searchbox-cat {
             display: none;
         }

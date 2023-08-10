@@ -10,24 +10,28 @@
 <div class="block block-subscribe">
     <div class="title-home">
         <h2><?php echo __('SUBSCRIBE EMAIL') ?></h2>
-		<div class="desc"><?php echo __('Lorem Ipsum is simply dummy text of the printing and typesetting industry dummy') ?></div>
+        <div class="desc"><?php echo __('Lorem Ipsum is simply dummy text of the printing and typesetting industry dummy') ?></div>
     </div>
     <form class="form subscribe"
-            novalidate
-            action="<?php /* @escapeNotVerified */ echo $block->getFormActionUrl() ?>"
-            method="post"
-            data-mage-init='{"validation": {"errorClass": "mage-error"}}'
-            id="newsletter-validate-detail">
-			
-            <div class="input-box">
-                <input name="email" type="email" id="newsletter"
-								onfocus="if(this.value=='Enter your email address') this.value='';" onblur="if(this.value=='') this.value='Enter your email address';" value="Enter your email address"
-                                data-validate="{required:true, 'validate-email':true}"/>
-            </div>
+          novalidate
+          action="<?php /* @escapeNotVerified */
+          echo $block->getFormActionUrl() ?>"
+          method="post"
+          data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+          id="newsletter-validate-detail">
 
-            <button class="action subscribe primary" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" type="submit">
-                <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
-            </button>
+        <div class="input-box">
+            <input name="email" type="email" id="newsletter"
+                   onfocus="if(this.value=='Enter your email address') this.value='';"
+                   onblur="if(this.value=='') this.value='Enter your email address';" value="Enter your email address"
+                   data-validate="{required:true, 'validate-email':true}"/>
+        </div>
+
+        <button class="action subscribe primary" title="<?php /* @escapeNotVerified */
+        echo __('Submit') ?>" type="submit">
+            <span><?php /* @escapeNotVerified */
+                echo __('Submit') ?></span>
+        </button>
     </form>
 </div>
 

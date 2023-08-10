@@ -206,6 +206,7 @@ class Data extends AbstractHelper
 		return $new_image;
 	}
 
+
 	public function HexToRGB($hex)
 	{
 		$hex = preg_replace("/#/", "", $hex);

@@ -1,37 +1,38 @@
 <?php
-	$_config = $this->helper('Sm\Maxshop\Helper\Data');
+$_config = $this->helper('Sm\Maxshop\Helper\Data');
 ?>
 <div class="footer-container footer-3">
 
-		<div class="footer-top">
-			<div class="container">
-				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-cates')->toHtml(); ?>
-			</div>
-		</div>
-		<div class="footer-middle">
-			<div class="container">
-				<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-content-middle')->toHtml(); ?>
+    <div class="footer-top">
+        <div class="container">
+            <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-cates')->toHtml(); ?>
+        </div>
+    </div>
+    <div class="footer-middle">
+        <div class="container">
+            <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-content-middle')->toHtml(); ?>
 
-				<?php echo $block->getLayout()->createBlock('Magento\Framework\View\Element\Template')->setTemplate('Magento_Theme::html/social.phtml')->toHtml(); ?>
-			</div>
-		</div>
-		
-		<div class="copyright">
-			<div class="container">
-				<div class="footer-copyright-content">
-					<div class="copyright-footer">
-						<?php if($_config->getAdvanced('custom_copyright')){ ?>
-							<address><?php echo $_config->getAdvanced('copyright_content') ?></address>
-						<?php } else {?>
-							<address><?php /* @escapeNotVerified */ echo $block->getCopyright() ?></address>
-						<?php } ?>
-					</div>
-					<div class="payment-footer">
-                        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer3-payment')->toHtml(); ?>
-                    </div>					
-				</div>
-			</div>
-		</div>
+            <?php echo $block->getLayout()->createBlock('Magento\Framework\View\Element\Template')->setTemplate('Magento_Theme::html/social.phtml')->toHtml(); ?>
+        </div>
+    </div>
 
-		
+    <div class="copyright">
+        <div class="container">
+            <div class="footer-copyright-content">
+                <div class="copyright-footer">
+                    <?php if ($_config->getAdvanced('custom_copyright')) { ?>
+                        <address><?php echo $_config->getAdvanced('copyright_content') ?></address>
+                    <?php } else { ?>
+                        <address><?php /* @escapeNotVerified */
+                            echo $block->getCopyright() ?></address>
+                    <?php } ?>
+                </div>
+                <div class="payment-footer">
+                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer3-payment')->toHtml(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>

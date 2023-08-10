@@ -27,6 +27,7 @@
     top: 0;
     right: 0;
     min-width: 388px;
+
     &:before {
         .font-awesome (f017, 16px);
         margin-right: 8px;
@@ -34,6 +35,7 @@
         line-height: 32px;
         color: @color_theme;
     }
+
     > label {
         float: left;
         margin-right: 15px;
@@ -41,6 +43,7 @@
         display: inline-block;
         line-height: 32px;
     }
+
     .deals-time {
         float: left;
         padding: 5px 10px;
@@ -48,6 +51,7 @@
         margin-right: 11px;
         display: inline-block;
         font-size: 85.71%;
+
         &:last-child {
             margin-right: 0;
         }
@@ -301,23 +305,28 @@
 .sm-countdownproduct-slider .cslider-wrap {
     margin: 0 -20px;
     padding: 0;
+
     > div {
         padding: 0 20px;
     }
+
     .owl-controls {
         .owl-nav > div {
             position: absolute;
             top: 33%;
             .transform_scale(0);
             .transition(0.3s);
+
             &.owl-prev {
                 left: -3px;
             }
+
             &.owl-next {
                 right: -3px;
             }
         }
     }
+
     &:hover {
         .owl-controls {
             .owl-nav > div {

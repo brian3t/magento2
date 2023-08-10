@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * SM CartQuickPro - Version 1.1.0
+ * SM CartQuickPro - Version 1.5.0
  * Copyright (c) 2017 YouTech Company. All Rights Reserved.
  * @license - Copyrighted Commercial Software
  * Author: YouTech Company
@@ -13,17 +13,25 @@ namespace Sm\CartQuickPro\Controller\Cart;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Checkout\Model\Cart as CustomerCart;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Add extends \Magento\Checkout\Controller\Cart
+class Add extends \Magento\Checkout\Controller\Cart implements HttpPostActionInterface
 {
     /**
      * @var ProductRepositoryInterface
      */
     protected $productRepository;
 
+	/**
+     * Object Manager instance
+     *
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $_objectManager;
+	
     /**
      * @param \Magento\Framework\App\Action\Context $context
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
@@ -51,6 +59,7 @@ class Add extends \Magento\Checkout\Controller\Cart
             $formKeyValidator,
             $cart
         );
+        $this->_objectManager = $context->getObjectManager();
         $this->productRepository = $productRepository;
     }
 
@@ -179,7 +188,11 @@ class Add extends \Magento\Checkout\Controller\Cart
 		
 		return $this->_jsonResponse($result);
     }
-	
+
+    /**
+     * @param $result
+     * @return mixed
+     */
 	protected function _jsonResponse($result)
     {
         return $this->getResponse()->representJson(

@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * SM CartQuickPro - Version 1.1.0
+ * SM CartQuickPro - Version 1.5.0
  * Copyright (c) 2017 YouTech Company. All Rights Reserved.
  * @license - Copyrighted Commercial Software
  * Author: YouTech Company
@@ -15,6 +15,8 @@ use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Wishlist\Controller\WishlistProviderInterface;
+use Magento\Wishlist\Model\Item;
+use Magento\Wishlist\Model\Product\AttributeValueProvider;
 
 class Remove extends \Magento\Wishlist\Controller\AbstractIndex
 {
@@ -29,6 +31,15 @@ class Remove extends \Magento\Wishlist\Controller\AbstractIndex
     protected $formKeyValidator;
 
     /**
+     * Object Manager instance
+     *
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $_objectManager;
+
+    private $attributeValueProvider;
+
+    /**
      * @param Action\Context $context
      * @param WishlistProviderInterface $wishlistProvider
      * @param Validator $formKeyValidator
@@ -36,10 +47,14 @@ class Remove extends \Magento\Wishlist\Controller\AbstractIndex
     public function __construct(
         Action\Context $context,
         WishlistProviderInterface $wishlistProvider,
-        Validator $formKeyValidator
+        Validator $formKeyValidator,
+        AttributeValueProvider $attributeValueProvider = null
     ) {
         $this->wishlistProvider = $wishlistProvider;
         $this->formKeyValidator = $formKeyValidator;
+        $this->attributeValueProvider = $attributeValueProvider
+            ?: \Magento\Framework\App\ObjectManager::getInstance()->get(AttributeValueProvider::class);
+        $this->_objectManager = $context->getObjectManager();
         parent::__construct($context);
     }
 
@@ -60,7 +75,7 @@ class Remove extends \Magento\Wishlist\Controller\AbstractIndex
         }
 
         $id = (int)$this->getRequest()->getParam('item');
-        $item = $this->_objectManager->create('Magento\Wishlist\Model\Item')->load($id);
+        $item = $this->_objectManager->create(Item::class)->load($id);
         if (!$item->getId()) {
             throw new NotFoundException(__('Page not found.'));
         }
@@ -71,6 +86,14 @@ class Remove extends \Magento\Wishlist\Controller\AbstractIndex
         try {
             $item->delete();
             $wishlist->save();
+            $productName = $this->attributeValueProvider
+                ->getRawAttributeValue($item->getProductId(), 'name');
+            $this->messageManager->addComplexSuccessMessage(
+                'removeWishlistItemSuccessMessage',
+                [
+                    'product_name' => $productName,
+                ]
+            );
 			$message = __(
 				'You removed product from your Wish List.'
 			);
@@ -78,6 +101,7 @@ class Remove extends \Magento\Wishlist\Controller\AbstractIndex
 			$result['messages'] =  $message;
 			if (isset($params['isWishlistPage'])){
 				$_layout  = $this->_objectManager->get('Magento\Framework\View\LayoutInterface');
+
 				$_layout->getUpdate()->load(['cartquickpro_wishlist_index_index']);
 				$_layout->generateXml();
 				$_output = $_layout->getOutput();

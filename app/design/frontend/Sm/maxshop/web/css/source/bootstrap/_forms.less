@@ -333,14 +333,17 @@ input[type="checkbox"] {
         line-height: @line-height-small;
         border-radius: @input-border-radius-small;
     }
+
     select.form-control {
         height: @input-height-small;
         line-height: @input-height-small;
     }
+
     textarea.form-control,
     select[multiple].form-control {
         height: auto;
     }
+
     .form-control-static {
         height: @input-height-small;
         min-height: (@line-height-computed + @font-size-small);
@@ -362,14 +365,17 @@ input[type="checkbox"] {
         line-height: @line-height-large;
         border-radius: @input-border-radius-large;
     }
+
     select.form-control {
         height: @input-height-large;
         line-height: @input-height-large;
     }
+
     textarea.form-control,
     select[multiple].form-control {
         height: auto;
     }
+
     .form-control-static {
         height: @input-height-large;
         min-height: (@line-height-computed + @font-size-large);
@@ -442,6 +448,7 @@ input[type="checkbox"] {
     & ~ .form-control-feedback {
         top: (@line-height-computed + 5); // Height of the `label` and its margin
     }
+
     &.sr-only ~ .form-control-feedback {
         top: 0;
     }
@@ -559,6 +566,7 @@ input[type="checkbox"] {
         margin-bottom: 0;
         padding-top: (@padding-base-vertical + 1); // Default padding plus a border
     }
+
     // Account for padding we're adding to ensure the alignment and of help text
     // and other content below items
     .radio,
@@ -601,6 +609,7 @@ input[type="checkbox"] {
             }
         }
     }
+
     .form-group-sm {
         @media (min-width: @screen-sm-min) {
             .control-label {

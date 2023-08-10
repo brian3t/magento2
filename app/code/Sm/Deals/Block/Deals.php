@@ -27,6 +27,7 @@ class Deals extends AbstractProduct
 	protected $_directory;
 	protected $_objectManager;
 	protected $_scopeConfigInterface;
+	
 
 	/**
 	 * @var \Magento\Framework\Stdlib\DateTime\TimezoneInterface
@@ -37,8 +38,10 @@ class Deals extends AbstractProduct
 	 * @var \Magento\Store\Model\StoreManagerInterface
 	 */
 	protected $_storeManager;
+	protected $_reviewFactory;
 
 	public function __construct(
+		\Magento\Review\Model\ReviewFactory $reviewFactory,
 		ResourceConnection $resourceConnection,
 		ObjectManagerInterface $objectManager,
 		Config $eavConfig,
@@ -56,6 +59,7 @@ class Deals extends AbstractProduct
 		$this->_directory = $this->_objectManager->get('\Magento\Framework\Filesystem');
 		$this->localeDate = $this->_objectManager->get('\Magento\Framework\Stdlib\DateTime\TimezoneInterface');
 		$this->_config = $this->_getCfg($attr, $data);
+		$this->_reviewFactory = $reviewFactory;
 		parent::__construct($context, $data);
 	}
 
@@ -182,7 +186,7 @@ class Deals extends AbstractProduct
 			'background' => (string)$this->_getConfig('img_background'),
 			'function' => (int)$this->_getConfig('img_function')
 		];
-
+		$helperImport = $this->_objectManager->get('\Magento\Catalog\Helper\Image');
 		$product_source = $this->_getConfig('product_source');
 
 		switch ($product_source) {
@@ -201,7 +205,11 @@ class Deals extends AbstractProduct
 							$_product->setStoreId($this->_storeId);
 							$_product->title = $_product->getName();
 							$image = $helper->getProductImage($_product, $this->_getConfig());
-							$_image = $helper->_resizeImage($image, $image_config);
+							//$_image = $helper->_resizeImage($image, $image_config);
+							$_image = $helperImport->init($_product, 'product_page_image_small')
+										->setImageFile($_product->getImage()) // image,small_image,thumbnail
+										->resize($image_config['width'])
+										->getUrl();
 							$_product->_image = $_image;
 							$_product->_description = $helper->_cleanText($_product->getDescription());
 							$_product->_description = $helper->_trimEncode($_product->_description != '') ? $_product->_description : $helper->_cleanText($_product->getShortDescription());
@@ -508,4 +516,10 @@ class Deals extends AbstractProduct
             ]
         ];
     }
+	public function getRatingSummary(\Magento\Catalog\Model\Product $product)
+	{
+		$this->_reviewFactory->create()->getEntitySummary($product, $this->_storeManager->getStore()->getId());
+		$ratingSummary = $product->getRatingSummary()->getRatingSummary();
+		return $ratingSummary;
+	}
 }

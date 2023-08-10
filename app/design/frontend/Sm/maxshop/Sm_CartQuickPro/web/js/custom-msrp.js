@@ -6,14 +6,14 @@
  * Author: YouTech Company
  * Websites: http://www.magentech.com
  */
- 
+
 define([
     'jquery',
     'underscore',
     'jquery/ui',
     'mage/dropdown',
     'mage/template',
-	'ajaxCart'
+    'ajaxCart'
 ], function ($) {
     'use strict';
 
@@ -78,10 +78,10 @@ define([
             } else if (this.options.origin === 'tier') {
                 this.initTierPopup();
             }
-			if (typeof ajaxCart !== 'undefined' && !ajaxCart.options.isAjaxCart){
-				$(this.options.cartButtonId).on('click', this._addToCartSubmit.bind(this));
-			}
-		   
+            if (typeof ajaxCart !== 'undefined' && !ajaxCart.options.isAjaxCart) {
+                $(this.options.cartButtonId).on('click', this._addToCartSubmit.bind(this));
+            }
+
         },
 
         /**
@@ -98,7 +98,7 @@ define([
 
             $msrpPopup.find('button')
                 .on('click',
-                this.handleMsrpAddToCart.bind(this))
+                    this.handleMsrpAddToCart.bind(this))
                 .filter(this.options.popupCartButtonId)
                 .text($(this.options.addToCartButton).text());
 

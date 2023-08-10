@@ -6,7 +6,7 @@
 		<css src="Sm_MegaMenu::css/font-awesome.css" media="all" />
 		<css src="Sm_MegaMenu::css/megamenu.css" media="all" />
 		<!-- <script src="jquery.js" data-requiremodule="jquery" /> -->
-<!--		<script src="Sm_MegaMenu::js/jquery.nestable.js" defer="defer" async="" data-requiremodule="Sm_MegaMenu/js/jquery.nestable"  data-requirecontext="jquery" />-->
+		<!-- <script src="Sm_MegaMenu::js/jquery.nestable.js" defer="defer" async="" data-requiremodule="Sm_MegaMenu/js/jquery.nestable"  data-requirecontext="jquery" /> -->
 	</head>
 	<body>
 		<!-- <referenceContainer name="js">

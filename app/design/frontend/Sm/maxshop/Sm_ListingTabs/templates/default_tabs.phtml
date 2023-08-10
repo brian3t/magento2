@@ -7,24 +7,24 @@
  * Author: YouTech Company
  * Websites: http://www.magentech.com
  */
- 
-$list = $this->getData('list'); 
+
+$list = $this->getData('list');
 ?>
 <div class="ltabs-tabs-wrap ltabs-selectbox" tabindex="-1">
-	<span class="ltabs-current-select ltabs-tab-selected"></span>
-	<span class="ltabs-tab-arrow">&#9660;</span>
-	<ul class="ltabs-tabs cf">
-		<?php
-		foreach ($list as $tab) {
-			?>
-			<li class="ltabs-tab <?php echo isset($tab['sel']) ? '  tab-sel tab-loaded' : ''; ?>  "
-				data-tab-id="<?php echo $tab['id_tab']; ?>" data-catids="<?php echo $tab['cat_children'] ?>">
+    <span class="ltabs-current-select ltabs-tab-selected"></span>
+    <span class="ltabs-tab-arrow">&#9660;</span>
+    <ul class="ltabs-tabs cf">
+        <?php
+        foreach ($list as $tab) {
+            ?>
+            <li class="ltabs-tab <?php echo isset($tab['sel']) ? '  tab-sel tab-loaded' : ''; ?>  "
+                data-tab-id="<?php echo $tab['id_tab']; ?>" data-catids="<?php echo $tab['cat_children'] ?>">
 				<span
-					class="ltabs-tab-label">
+                        class="ltabs-tab-label">
 						<?php echo $tab['name_tab']; ?>
 				</span>
-			</li>
-			<?php
-		} ?>
-	</ul>
+            </li>
+            <?php
+        } ?>
+    </ul>
 </div>

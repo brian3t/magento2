@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * SM CartQuickPro - Version 1.1.0
+ * SM CartQuickPro - Version 1.5.0
  * Copyright (c) 2017 YouTech Company. All Rights Reserved.
  * @license - Copyrighted Commercial Software
  * Author: YouTech Company
@@ -10,9 +10,50 @@
  
 namespace Sm\CartQuickPro\Controller\Cart;
 
-class UpdateItemOptions extends \Magento\Checkout\Controller\Cart
+use Magento\Checkout\Model\Cart as CustomerCart;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
+
+class UpdateItemOptions extends \Magento\Checkout\Controller\Cart implements HttpPostActionInterface
 {
+     /**
+     * Object Manager instance
+     *
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $_objectManager;
+
     /**
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+     * @param \Magento\Checkout\Model\Session $checkoutSession
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
+     * @param CustomerCart $cart
+     * @param ProductRepositoryInterface $productRepository
+     * @codeCoverageIgnore
+     */
+    public function __construct(
+        \Magento\Framework\App\Action\Context $context,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        \Magento\Checkout\Model\Session $checkoutSession,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
+        CustomerCart $cart,
+        ProductRepositoryInterface $productRepository
+    ) {
+        parent::__construct(
+            $context,
+            $scopeConfig,
+            $checkoutSession,
+            $storeManager,
+            $formKeyValidator,
+            $cart
+        );
+        $this->_objectManager = $context->getObjectManager();
+    }
+	
+	/**
      * Update product configuration for a cart item
      *
      * @return \Magento\Framework\Controller\Result\Redirect
@@ -21,7 +62,6 @@ class UpdateItemOptions extends \Magento\Checkout\Controller\Cart
      */
     public function execute()
     {
-        //var_dump($this->_request); die;
 		$id = (int)$this->getRequest()->getParam('id');
         $params = $this->getRequest()->getParams();
 		$result = [];
@@ -110,7 +150,11 @@ class UpdateItemOptions extends \Magento\Checkout\Controller\Cart
 		$result['isAddToCartBtn'] =   (!isset($params['isCheckoutPage']) && $this->cart->getItemsCount()) ? true : false ;
 		return $this->_jsonResponse($result);
     }
-	
+
+    /**
+     * @param $result
+     * @return mixed
+     */
 	protected function _jsonResponse($result)
     {
         return $this->getResponse()->representJson(
