@@ -335,6 +335,7 @@ class View extends Template
 	public function getItems()
 	{
 		$menuGroup = $this->createMenuGroup();
+		/** @var \Sm\MegaMenu\Model\MenuGroup $menuGroup */
 		$group_item = $menuGroup->load($this->_defaults['group_id']);
 		if($group_item->getStatus() == self::STATUS_ENABLED){
 			$collection_items = $this->_menuItem->getItemsByLv($this->_defaults['group_id'], $this->_defaults['start_level']);

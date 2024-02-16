@@ -1,3 +1,4 @@
+global$block;
 <div class="header-container header-style-6">
     <div class="header">
         <div class="header-inner">
@@ -6,6 +7,10 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-5 header-topleft">
                             <div class="topleft-content">
+                                /** @var Magento\Theme\Block\Html\Header $block **/
+                                <?php
+//                                $block = new Magento\Theme\Block\Html\Header();
+                                ?>
                                 <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header-slider')->toHtml(); ?>
                             </div>
                         </div>

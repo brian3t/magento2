@@ -8,7 +8,8 @@
         "AFL-3.0"
     ],
     "require": {
-        "magento/product-community-edition": "2.4.0"
+        "magento/product-community-edition": "2.4.0",
+        "stripe/stripe-payments": "2.9.5"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "3.2.2",
@@ -54,5 +55,10 @@
     ],
     "extra": {
         "magento-force": "override"
+    },
+    "config": {
+        "allow-plugins": {
+            "magento/magento-composer-installer": true
+        }
     }
 }
